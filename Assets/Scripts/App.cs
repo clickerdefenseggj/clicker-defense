@@ -12,6 +12,11 @@ public class App : MonoBehaviour
     List<Set> sets = new List<Set>();
     Dictionary<string, UnityEngine.Object> cachedObjects = new Dictionary<string, UnityEngine.Object>();
 
+    public float testRaycastDistance = 50.0f;
+    public NavMeshAgent agent;
+
+    public GameObject playerBase;
+
     void Awake()
     {
         if (m_inst == null)
@@ -74,26 +79,43 @@ public class App : MonoBehaviour
         return Instantiate(inst.cachedObjects[prefabName]) as GameObject;
     }
 
-    public float distance = 50.0f;
-    public NavMeshAgent agent;
-
     void FixedUpdate()
     {
         //if mouse button (left hand side) pressed instantiate a raycast
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    //create a ray cast and set it to the mouses cursor position in game
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit, testRaycastDistance))
+        //    {
+        //        //draw invisible ray cast/vector
+        //        Debug.DrawLine(ray.origin, hit.point);
+        //        //log hit area to the console
+        //        Debug.Log(hit.point);
+
+        //        agent.SetDestination(hit.point);
+        //    }
+        //}
+
         if (Input.GetMouseButtonDown(0))
-        {
-            //create a ray cast and set it to the mouses cursor position in game
+        { // if left button pressed...
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, distance))
+            if (Physics.Raycast(ray, out hit))
             {
-                //draw invisible ray cast/vector
-                Debug.DrawLine(ray.origin, hit.point);
-                //log hit area to the console
-                Debug.Log(hit.point);
+                if (hit.collider)
+                {
+                    var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
+                    if (clickHandler != null)
+                        clickHandler.On3DClick();
+                }
 
-                agent.SetDestination(hit.point);
+                // the object identified by hit.transform was clicked
+                // do whatever you want
             }
         }
     }
+
+  
 }

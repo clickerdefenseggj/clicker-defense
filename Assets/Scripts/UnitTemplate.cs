@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UnitTemplate
+public class EnemyTemplate
 {
     public int scoreValue;
     public int goldValue;
