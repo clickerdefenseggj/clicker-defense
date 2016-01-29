@@ -12,4 +12,9 @@ public class Set : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    protected void CloseSet()
+    {
+        SetManager.CloseSet(this);
+    }
 }
