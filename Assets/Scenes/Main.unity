@@ -110,8 +110,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2110400564}
+  - {fileID: 787184352}
   - {fileID: 771296203}
+  - {fileID: 2110400564}
+  - {fileID: 1430421099}
+  - {fileID: 515463401}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &79274447
@@ -230,48 +233,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!1001 &157490051
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 454210, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5b7c040a0bad5aa47b3b019a9443200c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &158409907
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +387,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 511566911}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &515463400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 515463401}
+  - 108: {fileID: 515463402}
+  m_Layer: 0
+  m_Name: SkyboxLight5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &515463401
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 515463400}
+  m_LocalRotation: {x: 0, y: -0.34202018, z: 0, w: 0.9396926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 26631630}
+  m_RootOrder: 4
+--- !u!108 &515463402
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 515463400}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 0.45512545, g: 0.6442251, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_Strength: 0.18
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1 &515955309
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +557,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 515955309}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 7400269f7d341bc41b1f21adeccb2a5f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 93d43b027dc267444af7412b8e607dbd, type: 2}
 --- !u!1 &591005764
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +659,7 @@ GameObject:
   - 4: {fileID: 771296203}
   - 108: {fileID: 771296204}
   m_Layer: 0
-  m_Name: Skybox2 Light
+  m_Name: SkyboxLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,8 +671,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771296202}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.21803272, y: 0.37527964, z: -0.21774983, w: -0.87419224}
+  m_LocalPosition: {x: 8, y: 10, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26631630}
@@ -661,6 +683,67 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771296202}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 0.6544118, g: 0.54984206, b: 0.26465183, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_Strength: 0.18
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!1 &787184351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 787184352}
+  - 108: {fileID: 787184353}
+  m_Layer: 0
+  m_Name: SkyboxLight1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787184352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787184351}
+  m_LocalRotation: {x: -0.04178533, y: -0.6265776, z: 0.70062786, w: -0.3387848}
+  m_LocalPosition: {x: 0.4, y: 8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 26631630}
+  m_RootOrder: 0
+--- !u!108 &787184353
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787184351}
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
@@ -952,6 +1035,67 @@ Transform:
   - {fileID: 964243505}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!1 &1430421098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1430421099}
+  - 108: {fileID: 1430421100}
+  m_Layer: 0
+  m_Name: SkyboxLight4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1430421099
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430421098}
+  m_LocalRotation: {x: -0.074894644, y: 0.7031291, z: -0.0851946, w: -0.701956}
+  m_LocalPosition: {x: 1.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 26631630}
+  m_RootOrder: 3
+--- !u!108 &1430421100
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430421098}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 0.7205882, g: 0.56477743, b: 0.2861159, a: 1}
+  m_Intensity: 1.59
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_Strength: 0.18
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!1001 &1466266309
 Prefab:
   m_ObjectHideFlags: 0
@@ -999,6 +1143,26 @@ Prefab:
       propertyPath: GameplaySkybox
       value: 
       objectReference: {fileID: 515955316}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 787184353}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[1]
+      value: 
+      objectReference: {fileID: 771296204}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[2]
+      value: 
+      objectReference: {fileID: 2110400563}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[3]
+      value: 
+      objectReference: {fileID: 1430421100}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[4]
+      value: 
+      objectReference: {fileID: 515463402}
     - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: SpawnLocations.Array.data[0]
       value: 
@@ -1426,12 +1590,12 @@ GameObject:
   - 4: {fileID: 2110400564}
   - 108: {fileID: 2110400563}
   m_Layer: 0
-  m_Name: Skybox1 Light
+  m_Name: SkyboxLight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &2110400563
 Light:
   m_ObjectHideFlags: 0
@@ -1442,7 +1606,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 0.9112267, b: 0.6691177, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.98
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1471,12 +1635,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110400562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.069485635, y: 0.65334785, z: -0.06615773, w: -0.75095373}
+  m_LocalPosition: {x: 12, y: 4, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26631630}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &2126516143
 GameObject:
   m_ObjectHideFlags: 0

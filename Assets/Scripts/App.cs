@@ -20,6 +20,7 @@ public class App : MonoBehaviour
 
     const int NUM_SKYBOXES = 5;
     public Material[] SkyboxMaterials = new Material[NUM_SKYBOXES];
+    public Light[] DirectionalLights = new Light[NUM_SKYBOXES];
     int PreviousSkyboxNumber = -1;
 
     public bool IsRunning = false;
@@ -126,13 +127,23 @@ public class App : MonoBehaviour
     {
         if(GameplaySkybox)
         {
-            int newSkybox = Random.Range(0, NUM_SKYBOXES);
+            int newSkybox = 0;
 
-            // never pick the same skybox twice
-            while(newSkybox == PreviousSkyboxNumber)
+            if (PreviousSkyboxNumber != -1)
             {
                 newSkybox = Random.Range(0, NUM_SKYBOXES);
+
+                // never pick the same skybox twice
+                while (newSkybox == PreviousSkyboxNumber)
+                {
+                    newSkybox = Random.Range(0, NUM_SKYBOXES);
+                }
             }
+
+            if (PreviousSkyboxNumber != -1)
+                DirectionalLights[PreviousSkyboxNumber].gameObject.SetActive(false);
+
+            DirectionalLights[newSkybox].gameObject.SetActive(true);
 
             GameplaySkybox.material = SkyboxMaterials[newSkybox];
             PreviousSkyboxNumber = newSkybox;
