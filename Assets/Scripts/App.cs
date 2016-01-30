@@ -41,7 +41,7 @@ public class App : MonoBehaviour
 	void Update ()
     {
        
-        if (Input.GetMouseButtonDown(0))
+        if (IsRunning && Input.GetMouseButtonDown(0))
         { // if left button pressed...
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
