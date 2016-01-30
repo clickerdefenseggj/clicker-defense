@@ -16,8 +16,13 @@ public class App : MonoBehaviour
 
     public LayerMask clickLayerMask;
     public SpawnWaveController SpawnController;
+    public Skybox GameplaySkybox;
 
-	public bool IsRunning = false;
+    const int NUM_SKYBOXES = 5;
+    public Material[] SkyboxMaterials = new Material[NUM_SKYBOXES];
+    int PreviousSkyboxNumber = -1;
+
+    public bool IsRunning = false;
 
     void Awake()
     {
@@ -120,6 +125,23 @@ public class App : MonoBehaviour
         return point;
 
 
+    }
+
+    public void ChooseRanomSkybox()
+    {
+        if(GameplaySkybox)
+        {
+            int newSkybox = Random.Range(0, NUM_SKYBOXES);
+
+            // never pick the same skybox twice
+            while(newSkybox == PreviousSkyboxNumber)
+            {
+                newSkybox = Random.Range(0, NUM_SKYBOXES);
+            }
+
+            GameplaySkybox.material = SkyboxMaterials[newSkybox];
+            PreviousSkyboxNumber = newSkybox;
+        }
     }
 
 }
