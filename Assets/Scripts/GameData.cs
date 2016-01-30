@@ -18,4 +18,21 @@ public static class GameData
             { EnemyType.Giant, new EnemyTemplate() { name = "Giant", scoreValue = 12, goldValue = 40, maxHealth = 650, speed = 1.0f, damage = 20, attackRate = 2  } },
             { EnemyType.Goblin, new EnemyTemplate() { name = "Goblin", scoreValue = 7, goldValue = 15, maxHealth = 100, speed = 3.5f, damage = 3, attackRate = 1 } }
         };
+
+    public static Dictionary<CinematicSet.Type, CinematicSet.Conversation> Cinematics =
+        new Dictionary<CinematicSet.Type, CinematicSet.Conversation>()
+        {
+            {
+                // HOARDER CONVERSATION
+                CinematicSet.Type.HoarderConv, new CinematicSet.Conversation() { 
+                    Sentences = new List<CinematicSet.Sentence>()
+                    {
+                        new CinematicSet.Sentence() { Words = "Uhh.... Your Majesty?", OwningTextBox = CinematicSet.Speaker.Guard},
+                        new CinematicSet.Sentence() { Words = "What is it?!  Can't you see we're being attacked!", OwningTextBox = CinematicSet.Speaker.King},
+                        new CinematicSet.Sentence() { Words = "We are out of cannonballs...", OwningTextBox = CinematicSet.Speaker.Guard}
+                    },
+                    LetterDelay = 0.1f
+                }
+            }
+        };
 }

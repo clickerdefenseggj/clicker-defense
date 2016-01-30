@@ -63,6 +63,17 @@ public class App : MonoBehaviour
                 // do whatever you want
             }
         }
+
+        // ------------------------
+        // Zesty Dev Hacks
+        // ------------------------
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            print("(zesty) Testing conversation...");
+            CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+            cs.BeginCinematic(CinematicSet.Type.HoarderConv);
+        }
+        // ------------------------
     }  
 
     public static GameObject Create(string prefabName)
