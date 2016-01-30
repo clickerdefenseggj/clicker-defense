@@ -80,10 +80,13 @@ public class CinematicSet : Set
         CurTextBox = GetTextBox(CurSentence.OwningTextBox);
         SetTextBoxVisible(CurTextBox, true);
         bSentenceComplete = false;
+
+        App.inst.SpawnController.PauseEnemiesForCinematic();
     }
 
     public void EndCinematic()
     {
+        App.inst.SpawnController.UnpauseEnemiesAfterCinematic();
         SetManager.CloseSet(this);
     }
 
@@ -161,10 +164,10 @@ public class CinematicSet : Set
         {
             case Speaker.Guard:
                 return GuardTextBox;
-                break;
+                //break;
             case Speaker.King:
                 return KingTextBox;
-                break;
+                //break;
         }
 
         print("(zesty): ERROR!  Data file has bad speaker enums set.");

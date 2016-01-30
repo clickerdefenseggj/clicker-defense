@@ -21,6 +21,7 @@ public class SpawnWaveController : MonoBehaviour {
 
     float CurrentSpawnTime = 0;
     float NextSpawnTime = 0;
+    float PausedSpawnTime = 0;
 
     public static int EnemiesSpawnedThisWave = 0;
     public static int EnemiesKilledThisWave = 0;
@@ -114,5 +115,25 @@ public class SpawnWaveController : MonoBehaviour {
     void ChooseNextSpawnTime()
     {
         NextSpawnTime = Random.Range(Random.Range(MinSpawnFrequencyMin, MinSpawnFrequencyMax), Mathf.Min(Random.Range(MaxSpawnFrequencyMin, MaxSpawnFrequencyMax) - (CurrentWave * 0.1f), MinSpawnTime));
+    }
+
+    public void PauseEnemiesForCinematic()
+    {
+        print("(zesty): Pausing " + SpawnedEnemies.Count + " enemies");
+        PausedSpawnTime = CurrentSpawnTime;
+        CurrentSpawnTime = float.NegativeInfinity;
+        foreach(Enemy CurrentEnemy in SpawnedEnemies)
+        {
+            CurrentEnemy.Pause();
+        }
+    }
+
+    public void UnpauseEnemiesAfterCinematic()
+    {
+        CurrentSpawnTime = PausedSpawnTime;
+        foreach (Enemy CurrentEnemy in SpawnedEnemies)
+        {
+            CurrentEnemy.UnPause();
+        }
     }
 }
