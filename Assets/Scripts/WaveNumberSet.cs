@@ -25,6 +25,7 @@ public class WaveNumberSet : Set
 
         if (CurrentTimeShown > TimeToShow)
         {
+            App.inst.ChooseRanomSkybox();
             App.inst.IsRunning = true;
             CloseSet();
         }

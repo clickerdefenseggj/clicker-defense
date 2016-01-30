@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  CurrentWave: 1
 --- !u!114 &11466718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +138,17 @@ MonoBehaviour:
   testRaycastDistance: 50
   agent: {fileID: 0}
   playerBase: {fileID: 0}
+  clickLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   SpawnController: {fileID: 11455620}
+  GameplaySkybox: {fileID: 0}
+  SkyboxMaterials:
+  - {fileID: 2100000, guid: 7400269f7d341bc41b1f21adeccb2a5f, type: 2}
+  - {fileID: 2100000, guid: e9705e00f62f62849b89fc9fd55aa0e3, type: 2}
+  - {fileID: 2100000, guid: 93d43b027dc267444af7412b8e607dbd, type: 2}
+  - {fileID: 2100000, guid: 13fde35df00f2384598d84d32a7bacd8, type: 2}
+  - {fileID: 2100000, guid: d07d2172e76d3fa429e80a14d2ae3616, type: 2}
   IsRunning: 0
 --- !u!1001 &100100000
 Prefab:
