@@ -14,6 +14,8 @@ public class App : MonoBehaviour
 
     public GameObject playerBase;
 
+    public bool IsRunning = false;
+
     void Awake()
     {
         if (m_inst == null)
@@ -29,10 +31,10 @@ public class App : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	
-	}
-
-  
+        // DEBUG: Testing leaderboard. Add one score per update.
+        if(IsRunning)
+            Player.Inst.AddScore(1);
+	}  
 
     public static GameObject Create(string prefabName)
     {
