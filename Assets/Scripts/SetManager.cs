@@ -9,23 +9,21 @@ public class SetManager : MonoBehaviour {
 
     public Set currentSet;
 
+    [SerializeField]
     List<Set> Sets = new List<Set>();
 
-    void Awake()
+    void OnEnable()
     {
-        if (m_Inst == null)
+        if (!m_Inst)
+        {
             m_Inst = this;
+            DontDestroyOnLoad(this);
+        }
+        else if (m_Inst != this)
+        {
+            Destroy(gameObject);
+        }
     }
-
-    // Use this for initialization
-    void Start () {
-     
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public static T OpenSet<T>() where T : Set
     {
