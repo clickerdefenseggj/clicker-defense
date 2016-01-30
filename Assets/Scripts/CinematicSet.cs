@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 public class CinematicSet : Set 
 {
-    public enum Type
-    {
-        HoarderConv,
-        GuardExclaim,
-        EnemyExclaim
-    }
+    //public enum Type
+    //{
+    //    HoarderConv,
+    //    GuardExclaim,
+    //    EnemyExclaim
+    //}
 
     public enum Speaker
     {
@@ -30,6 +30,13 @@ public class CinematicSet : Set
     {
         public List<Sentence> Sentences;
         public float LetterDelay;
+        public bool Randomize;
+    }
+
+    public enum Type
+    {
+        HoarderConversation,
+        RandomExclamation
     }
 
     public Text GuardTextBox;
@@ -50,7 +57,18 @@ public class CinematicSet : Set
         // Hide castle UI
 
         // TODO (zesty): Handle other enum types
-        Conv = GameData.Cinematics[Type.HoarderConv];
+        
+        switch(CinematicType)
+        {
+            case Type.HoarderConversation:
+                // NOTE (zesty): For special types, always use index 0, the list is used for other types that have
+                //  a randomization feature
+                Conv = GameData.Cinematics[CinematicType][0];
+                break;
+            case Type.RandomExclamation:
+                Conv = GameData.Cinematics[CinematicType][Random.Range(0, GameData.Cinematics[CinematicType].Count)];
+                break;
+        }
 
         LetterDelay = Conv.LetterDelay;
         TimeToNextLetter = LetterDelay;
