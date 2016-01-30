@@ -19,19 +19,49 @@ public static class GameData
             { EnemyType.Goblin, new EnemyTemplate() { name = "Goblin", scoreValue = 7, goldValue = 15, maxHealth = 100, speed = 3.5f, damage = 3, attackRate = 1 } }
         };
 
-    public static Dictionary<CinematicSet.Type, CinematicSet.Conversation> Cinematics =
-        new Dictionary<CinematicSet.Type, CinematicSet.Conversation>()
+    public static Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>> Cinematics =
+        new Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>>()
         {
+            // HOARDER CONVERSATION
             {
-                // HOARDER CONVERSATION
-                CinematicSet.Type.HoarderConv, new CinematicSet.Conversation() { 
-                    Sentences = new List<CinematicSet.Sentence>()
+                CinematicSet.Type.HoarderConversation, new List<CinematicSet.Conversation> () 
+                { 
+                    new CinematicSet.Conversation() 
                     {
-                        new CinematicSet.Sentence() { Words = "Uhh.... Your Majesty?", OwningTextBox = CinematicSet.Speaker.Guard},
-                        new CinematicSet.Sentence() { Words = "What is it?!  Can't you see we're being attacked!", OwningTextBox = CinematicSet.Speaker.King},
-                        new CinematicSet.Sentence() { Words = "We are out of cannonballs...", OwningTextBox = CinematicSet.Speaker.Guard}
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "Uhh.... Your Majesty?", OwningTextBox = CinematicSet.Speaker.Guard},
+                            new CinematicSet.Sentence() { Words = "What is it?!  Can't you see we're being attacked!", OwningTextBox = CinematicSet.Speaker.King},
+                            new CinematicSet.Sentence() { Words = "We are out of cannonballs...", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    }
+                }
+            },
+            // RANDOM EXCLAMATIONS
+            {
+                CinematicSet.Type.RandomExclamation, new List<CinematicSet.Conversation>() {
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "I MIGHT NEED THAT LATER!  STOP!!", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.2f
                     },
-                    LetterDelay = 0.1f
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "How about this, vile scum!", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "Not the gumdrop buttons!", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.05f,
+                    }
                 }
             }
         };

@@ -91,4 +91,14 @@ public class Enemy : MonoBehaviour
         agent.speed = Template.speed;
     }
 
+    public void Pause()
+    {
+        agent.speed = 0.0f;
+    }
+
+    public void UnPause()
+    {
+        agent.speed = Template.speed;
+    }
+
 }

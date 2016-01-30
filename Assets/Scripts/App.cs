@@ -72,7 +72,12 @@ public class App : MonoBehaviour
         {
             print("(zesty) Testing conversation...");
             CinematicSet cs = SetManager.OpenSet<CinematicSet>();
-            cs.BeginCinematic(CinematicSet.Type.HoarderConv);
+            cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+            cs.BeginCinematic(CinematicSet.Type.RandomExclamation);
         }
         // ------------------------
     }  
