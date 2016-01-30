@@ -16,8 +16,14 @@ public class App : MonoBehaviour
 
     public LayerMask clickLayerMask;
     public SpawnWaveController SpawnController;
+    public Skybox GameplaySkybox;
 
-	public bool IsRunning = false;
+    const int NUM_SKYBOXES = 5;
+    public Material[] SkyboxMaterials = new Material[NUM_SKYBOXES];
+    public Light[] DirectionalLights = new Light[NUM_SKYBOXES];
+    int PreviousSkyboxNumber = -1;
+
+    public bool IsRunning = false;
 
     void Awake()
     {
@@ -58,6 +64,22 @@ public class App : MonoBehaviour
                 // do whatever you want
             }
         }
+
+        // ------------------------
+        // Zesty Dev Hacks
+        // ------------------------
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            print("(zesty) Testing conversation...");
+            CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+            cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+            cs.BeginCinematic(CinematicSet.Type.RandomExclamation);
+        }
+        // ------------------------
     }  
 
     public static GameObject Create(string prefabName)
@@ -104,6 +126,33 @@ public class App : MonoBehaviour
         return point;
 
 
+    }
+
+    public void ChooseRanomSkybox()
+    {
+        if(GameplaySkybox)
+        {
+            int newSkybox = 0;
+
+            if (PreviousSkyboxNumber != -1)
+            {
+                newSkybox = Random.Range(0, NUM_SKYBOXES);
+
+                // never pick the same skybox twice
+                while (newSkybox == PreviousSkyboxNumber)
+                {
+                    newSkybox = Random.Range(0, NUM_SKYBOXES);
+                }
+            }
+
+            if (PreviousSkyboxNumber != -1)
+                DirectionalLights[PreviousSkyboxNumber].gameObject.SetActive(false);
+
+            DirectionalLights[newSkybox].gameObject.SetActive(true);
+
+            GameplaySkybox.material = SkyboxMaterials[newSkybox];
+            PreviousSkyboxNumber = newSkybox;
+        }
     }
 
 }
