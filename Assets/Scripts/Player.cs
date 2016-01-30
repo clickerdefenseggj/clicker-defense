@@ -30,19 +30,6 @@ public class Player : MonoBehaviour
             m_Inst = this;
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-        
-    
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
-
     public void Reset()
     {
         Score = 0;
