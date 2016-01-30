@@ -37,6 +37,7 @@ public class MainMenuSet : Set
         App.inst.IsRunning = true;
 
         SetManager.OpenSet<GameplaySet>();
+        SetManager.OpenSet<WaveNumberSet>();
 
         CloseSet();
     }

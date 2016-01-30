@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 470626}
   - 114: {fileID: 11495548}
+  - 114: {fileID: 11455620}
   m_Layer: 0
   m_Name: App
   m_TagString: Untagged
@@ -85,6 +86,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ForceModuleActive: 0
+--- !u!114 &11455620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763750d7e795e704086bcb4ac8fed4e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  MovementDestinations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11466718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,6 +137,8 @@ MonoBehaviour:
   testRaycastDistance: 50
   agent: {fileID: 0}
   playerBase: {fileID: 0}
+  SpawnController: {fileID: 11455620}
+  IsRunning: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

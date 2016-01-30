@@ -14,6 +14,8 @@ public class App : MonoBehaviour
 
     public GameObject playerBase;
 
+    public SpawnWaveController SpawnController;
+
     public bool IsRunning = false;
 
     void Awake()
@@ -32,8 +34,30 @@ public class App : MonoBehaviour
 	void Update ()
     {
         // DEBUG: Testing leaderboard. Add one score per update.
-        if(IsRunning)
-            Player.Inst.AddScore(1);
+        if (IsRunning)
+        {
+            //Player.Inst.AddScore(1);
+
+            //if mouse button(left hand side) pressed instantiate a raycast
+            if (Input.GetMouseButtonDown(0))
+            { // if left button pressed...
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider)
+                    {
+                        var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
+                        if (clickHandler != null)
+                            clickHandler.On3DClick();
+                    }
+
+                    // the object identified by hit.transform was clicked
+                    // do whatever you want
+                }
+            }
+
+        }
 	}  
 
     public static GameObject Create(string prefabName)
@@ -46,43 +70,23 @@ public class App : MonoBehaviour
         return Instantiate(inst.cachedObjects[prefabName]) as GameObject;
     }
 
-    void FixedUpdate()
+    public void EndLevel()
     {
-        //if mouse button (left hand side) pressed instantiate a raycast
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    //create a ray cast and set it to the mouses cursor position in game
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit, testRaycastDistance))
-        //    {
-        //        //draw invisible ray cast/vector
-        //        Debug.DrawLine(ray.origin, hit.point);
-        //        //log hit area to the console
-        //        Debug.Log(hit.point);
+        if (App.inst.IsRunning == false)
+            return;
 
-        //        agent.SetDestination(hit.point);
-        //    }
-        //}
-
-        if (Input.GetMouseButtonDown(0))
-        { // if left button pressed...
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+        new GameSparks.Api.Requests.LogEventRequest().SetEventKey("SUBMIT_SCORE").SetEventAttribute("SCORE", Player.Inst.GetScore()).Send((response) => {
+            if (!response.HasErrors)
             {
-                if (hit.collider)
-                {
-                    var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
-                    if (clickHandler != null)
-                        clickHandler.On3DClick();
-                }
-
-                // the object identified by hit.transform was clicked
-                // do whatever you want
+                Debug.Log("Score Posted Successfully...");
             }
-        }
-    }
+            else {
+                Debug.Log("Error Posting Score...");
+            }
+        });
 
-  
+        App.inst.IsRunning = false;
+
+        SetManager.OpenSet<LeaderboardSet>();
+    }
 }

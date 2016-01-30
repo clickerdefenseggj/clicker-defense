@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public string Name;
     private int Cash;
     private int Score;
+
+    public float MaxHealth = 100;
+    public float CurrentHealth;
     
     // TODO: Player upgrades
 
@@ -30,9 +33,22 @@ public class Player : MonoBehaviour
             m_Inst = this;
     }
 
+    // Use this for initialization
+    void Start ()
+    {
+        CurrentHealth = MaxHealth;
+    }
+	
+	// Update is called once per frame
+	void Update ()
+    {
+	
+	}
+
     public void Reset()
     {
         Score = 0;
+        CurrentHealth = MaxHealth;
     }
 
     public void AddScore(int score)
@@ -43,6 +59,14 @@ public class Player : MonoBehaviour
     public int GetScore()
     {
         return Score;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0 && App.inst.IsRunning)
+            App.inst.EndLevel();
     }
 
     public void SetName(Text nameText)

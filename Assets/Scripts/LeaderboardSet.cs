@@ -40,6 +40,8 @@ public class LeaderboardSet : Set {
     {
         Player.Inst.Reset();
 
+        App.inst.SpawnController.Reset();
+
         App.inst.IsRunning = true;
 
         SetManager.OpenSet<GameplaySet>();
