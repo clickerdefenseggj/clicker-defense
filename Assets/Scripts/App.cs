@@ -66,8 +66,7 @@ public class App : MonoBehaviour
         {
             print("(zesty) Testing conversation...");
             CinematicSet cs = SetManager.OpenSet<CinematicSet>();
-            cs.type = CinematicSet.Type.HoarderConv;
-            cs.BeginCinematic();
+            cs.BeginCinematic(CinematicSet.Type.HoarderConv);
         }
         // ------------------------
     }  

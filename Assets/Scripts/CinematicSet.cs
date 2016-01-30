@@ -12,39 +12,45 @@ public class CinematicSet : Set
         EnemyExclaim
     }
 
+    public enum Speaker
+    {
+        King,
+        Guard
+    }
+
     [System.Serializable]
     public struct Sentence
     {
         public string Words;
-        public Text OwningTextBox;
+        public Speaker OwningTextBox;
     }
 
     [System.Serializable]
     public struct Conversation
     {
-        public Sentence[] Sentences;
+        public List<Sentence> Sentences;
         public float LetterDelay;
-        public bool ShowAll;
     }
 
-    public Type type;
-    public Conversation HoarderConv;
+    public Text GuardTextBox;
+    public Text KingTextBox;
 
     private Conversation Conv;
     private Sentence CurSentence;
+    private Text CurTextBox;
     private int SentenceIndex;
     private int LetterIndex;
     private float TimeToNextLetter;
     private float LetterDelay;
-    private bool bWaitForInput;
+    private bool bSentenceComplete;
 
-    public void BeginCinematic()
+    public void BeginCinematic(Type CinematicType)
     {
         // Disable player input
         // Hide castle UI
 
         // TODO (zesty): Handle other enum types
-        Conv = HoarderConv;
+        Conv = GameData.Cinematics[Type.HoarderConv];
 
         LetterDelay = Conv.LetterDelay;
         TimeToNextLetter = LetterDelay;
@@ -53,13 +59,14 @@ public class CinematicSet : Set
         LetterIndex = 0;
         CurSentence = Conv.Sentences[SentenceIndex];
 
-        SetTextBoxVisible(CurSentence.OwningTextBox, true);
-        bWaitForInput = false;
+        CurTextBox = GetTextBox(CurSentence.OwningTextBox);
+        SetTextBoxVisible(CurTextBox, true);
+        bSentenceComplete = false;
     }
 
     public void EndCinematic()
     {
-
+        SetManager.CloseSet(this);
     }
 
 	// Use this for initialization
@@ -72,53 +79,53 @@ public class CinematicSet : Set
 	void Update () 
     {
         TimeToNextLetter -= Time.deltaTime;
-	    if(TimeToNextLetter < 0 && bWaitForInput == false)
+	    if(TimeToNextLetter < 0 && bSentenceComplete == false)
         {
             TimeToNextLetter = LetterDelay;
             ++LetterIndex;
 
             if (LetterIndex >= CurSentence.Words.Length)
             {
-                bWaitForInput = true;
+                bSentenceComplete = true;
             }
             else
             {
-                CurSentence.OwningTextBox.text = CurSentence.Words.Substring(0, LetterIndex);
+                CurTextBox.text = CurSentence.Words.Substring(0, LetterIndex);
             }
         }
 
-        if(bWaitForInput == true)
+        if(bSentenceComplete == true)
         {
-            CurSentence.OwningTextBox.text = CurSentence.Words;
+            CurTextBox.text = CurSentence.Words;
         }
 
         if(Input.GetMouseButtonDown(0))
         {
-            if(bWaitForInput == true)
+            if(bSentenceComplete == true)
             {
                 ++SentenceIndex;
-                if(SentenceIndex == Conv.Sentences.Length)
+                if(SentenceIndex == Conv.Sentences.Count)
                 {
                     print("(zesty) Cinematic complete...");
-                    SetTextBoxVisible(CurSentence.OwningTextBox, false);
+                    SetTextBoxVisible(CurTextBox, false);
                     EndCinematic();
                 }
                 else
                 {
                     // Next sentence time!
-                    SetTextBoxVisible(CurSentence.OwningTextBox, false);
+                    SetTextBoxVisible(CurTextBox, false);
 
                     CurSentence = Conv.Sentences[SentenceIndex];
-                    SetTextBoxVisible(CurSentence.OwningTextBox, true);
+                    CurTextBox = GetTextBox(CurSentence.OwningTextBox);
+                    SetTextBoxVisible(CurTextBox, true);
                     TimeToNextLetter = LetterDelay;
                     LetterIndex = 0;
-                    bWaitForInput = false;
+                    bSentenceComplete = false;
                 }
             }
             else
             {
-                bWaitForInput = true;
-                CurSentence.OwningTextBox.text = CurSentence.Words;
+                bSentenceComplete = true;
             }
         }
 	}
@@ -126,5 +133,23 @@ public class CinematicSet : Set
     private void SetTextBoxVisible(Text Box, bool Visible)
     {
         Box.transform.parent.gameObject.SetActive(Visible);
+
+        Box.text = "";
+    }
+
+    private Text GetTextBox(Speaker TheSpeaker)
+    {
+        switch(TheSpeaker)
+        {
+            case Speaker.Guard:
+                return GuardTextBox;
+                break;
+            case Speaker.King:
+                return KingTextBox;
+                break;
+        }
+
+        print("(zesty): ERROR!  Data file has bad speaker enums set.");
+        return null;
     }
 }

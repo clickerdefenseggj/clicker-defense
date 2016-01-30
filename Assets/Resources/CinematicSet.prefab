@@ -256,17 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4eabad9415b4d74795db0664cb04a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  HoarderConv:
-    Sentences:
-    - Words: 'Guard:  Uh...Your majesty?'
-      OwningTextBox: {fileID: 11485260}
-    - Words: 'King: What is it?'
-      OwningTextBox: {fileID: 11404128}
-    - Words: 'Guard: We''re out of cannonballs...'
-      OwningTextBox: {fileID: 11485260}
-    LetterDelay: 0.1
-    ShowAll: 0
+  GuardTextBox: {fileID: 11485260}
+  KingTextBox: {fileID: 11404128}
 --- !u!222 &22207160
 CanvasRenderer:
   m_ObjectHideFlags: 1
