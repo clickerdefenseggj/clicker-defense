@@ -14,9 +14,10 @@ public class App : MonoBehaviour
 
     public GameObject playerBase;
 
+    public LayerMask clickLayerMask;
     public SpawnWaveController SpawnController;
 
-    public bool IsRunning = false;
+	public bool IsRunning = false;
 
     void Awake()
     {
@@ -33,32 +34,31 @@ public class App : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // DEBUG: Testing leaderboard. Add one score per update.
-        if (IsRunning)
-        {
-            //Player.Inst.AddScore(1);
-
-            //if mouse button(left hand side) pressed instantiate a raycast
-            if (Input.GetMouseButtonDown(0))
-            { // if left button pressed...
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+       
+        if (Input.GetMouseButtonDown(0))
+        { // if left button pressed...
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickLayerMask))
+            {
+                if (hit.collider)
                 {
-                    if (hit.collider)
-                    {
-                        var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
-                        if (clickHandler != null)
-                            clickHandler.On3DClick();
-                    }
+                    // Notify enemies that they have been clicked
+                    var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
+                    if (clickHandler != null)
+                        clickHandler.On3DClick();
 
-                    // the object identified by hit.transform was clicked
-                    // do whatever you want
+                    // Create the projectile
+                    if (playerBase)
+                        PropProjectile.Create(playerBase.transform.position, hit.point);
+
                 }
-            }
 
+                // the object identified by hit.transform was clicked
+                // do whatever you want
+            }
         }
-	}  
+    }  
 
     public static GameObject Create(string prefabName)
     {
@@ -72,15 +72,20 @@ public class App : MonoBehaviour
 
     public void EndLevel()
     {
+
         if (App.inst.IsRunning == false)
             return;
 
-        new GameSparks.Api.Requests.LogEventRequest().SetEventKey("SUBMIT_SCORE").SetEventAttribute("SCORE", Player.Inst.GetScore()).Send((response) => {
+
+        new GameSparks.Api.Requests.LogEventRequest().SetEventKey("SUBMIT_SCORE").SetEventAttribute("SCORE", Player.Inst.GetScore()).Send((response) =>
+        {
+            //        agent.SetDestination(hit.point);
             if (!response.HasErrors)
             {
                 Debug.Log("Score Posted Successfully...");
             }
-            else {
+            else
+            {
                 Debug.Log("Error Posting Score...");
             }
         });
@@ -89,4 +94,16 @@ public class App : MonoBehaviour
 
         SetManager.OpenSet<LeaderboardSet>();
     }
+
+    public static Vector3 GetHermiteCurvePoint(float t, Vector3 start, Vector3 end, Vector3 tanStart, Vector3 tanEnd)
+    {
+        Vector3 point = ((1.0f - (3.0f * Mathf.Pow(t, 2.0f)) + (2.0f * Mathf.Pow(t, 3.0f))) * start)
+            + (Mathf.Pow(t, 2) * (3.0f - (2.0f * t)) * end)
+            + ((t * Mathf.Pow((t - 1.0f), 2.0f)) * tanStart)
+            + (Mathf.Pow(t, 2.0f) * (t - 1.0f) * tanEnd);
+        return point;
+
+
+    }
+
 }

@@ -7,7 +7,7 @@ public interface I3DClickHandler
     void On3DClick();
 }
 
-public class Enemy : MonoBehaviour, I3DClickHandler
+public class Enemy : MonoBehaviour
 {
     float CurrentHealth = 10;
     public NavMeshAgent agent;
@@ -64,7 +64,19 @@ public class Enemy : MonoBehaviour, I3DClickHandler
         CurrentHealth -= damage;
     }
 
-    public void On3DClick()
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other)
+        {
+            var ppc = other.gameObject.GetComponent<PropProjectileCollider>();
+            if (ppc)
+            {
+                Hit();
+            }
+        }
+    }
+
+    private void Hit()
     {
         ApplyDamage(100);
 
