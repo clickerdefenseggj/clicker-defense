@@ -1,23 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 public class StoreCategoryElement : MonoBehaviour
 {
-    public Text TitleText;
-    public RectTransform ContentTransform;
+    [FormerlySerializedAs("TitleText")]
+    public Text titleText;
+    [FormerlySerializedAs("ContentTransform")]
+    public RectTransform content;
 
-    public string CategoryName;
-
-    // Use this for initialization
-    void Start()
+    public void Initialize(string name)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        titleText.text = name;
     }
 }

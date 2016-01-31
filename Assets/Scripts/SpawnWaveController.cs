@@ -90,7 +90,8 @@ public class SpawnWaveController : MonoBehaviour {
                 CurrentWave++;
                 EnemiesKilledThisWave = 0;
                 EnemiesSpawnedThisWave = 0;
-                SetManager.OpenSet<WaveNumberSet>();
+                //SetManager.OpenSet<WaveNumberSet>();
+                SetManager.OpenSet<StoreSet>();
             }
         }
 
