@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
             PlayDeath();
             WaitToDie();
             isDead = true;
+            agent.enabled = false;
         }
 
         // Attack player
