@@ -8,7 +8,7 @@ public class ProjectileFactory : MonoBehaviour
     public static ProjectileFactory inst { get { return m_Inst; } }
 
     [SerializeField]
-    List<PropProjectile> prefabs = new List<PropProjectile>();
+    public List<PropProjectile> prefabs = new List<PropProjectile>();
 
     void OnEnable()
     {
