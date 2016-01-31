@@ -81,6 +81,13 @@ public class App : MonoBehaviour
             cs.BeginCinematic(CinematicSet.Type.RandomExclamation);
         }
         // ------------------------
+
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.Space))
+            Time.timeScale = 5.0f;
+        else
+            Time.timeScale = 1.0f;
+#endif
     }  
 
     public static GameObject Create(string prefabName)
