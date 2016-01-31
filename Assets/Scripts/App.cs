@@ -203,7 +203,7 @@ public class App : MonoBehaviour
 
     public IEnumerator PlayLevel1CinematicCoroutine()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(6);
 
         CinematicSet cs = SetManager.OpenSet<CinematicSet>();
         cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
