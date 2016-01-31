@@ -19,6 +19,14 @@ public static class GameData
             { EnemyType.Goblin, new EnemyTemplate() { name = "Goblin", scoreValue = 7, goldValue = 15, maxHealth = 100, speed = 3.5f, damage = 3, attackRate = 1 } }
         };
 
+    public static Dictionary<string, AchievementTemplate> achievementTemplates =
+        new Dictionary<string, AchievementTemplate>()
+        {
+            { "kill10enemies", new AchievementTemplate() { title = "Deterring the Masses", description = "Kill 10 enemy units", icon = "kill10"} },
+            { "kill25enemies", new AchievementTemplate() { title = "Expelling the Masses", description = "Kill 25 enemy units", icon = "kill25"} },
+            { "kill50enemies", new AchievementTemplate() { title = "Anihillating the Masses", description = "Kill 50 enemy units", icon = "kill50"} }
+        };
+
     public static Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>> Cinematics =
         new Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>>()
         {
