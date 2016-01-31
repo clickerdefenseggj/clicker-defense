@@ -172,7 +172,7 @@ public class Upgrade
     public bool Purchase(Player player)
     {
         int cost = GetCost(player);
-        if (player.Cash > cost && apply != null && apply(player))
+        if (player.Cash >= cost && apply != null && apply(player))
         {
             player.Cash -= cost;
             player.SetUpgradeLevel(name, player.GetUpgradeLevel(name) + 1);
