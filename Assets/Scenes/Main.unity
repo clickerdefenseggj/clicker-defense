@@ -3444,7 +3444,7 @@ TerrainCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086441524}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 4032b324e8bf3c840a01f21b8e6b3794, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1086441526
@@ -5097,6 +5097,10 @@ Prefab:
       propertyPath: MovementDestinations.Array.data[3]
       value: 
       objectReference: {fileID: 1776956136}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: clickLayerMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d4206790d77a66479199446359f347e, type: 2}
   m_IsPrefabParent: 0
