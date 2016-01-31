@@ -71,6 +71,9 @@ public class Player : MonoBehaviour
         if (CurrentHealth <= 0 && App.inst.IsRunning)
         {
             App.inst.EndLevel();
+
+            App.inst.IsRunning = false;
+            App.inst.SpawnController.ClearEnemies();    
         }
     }
 

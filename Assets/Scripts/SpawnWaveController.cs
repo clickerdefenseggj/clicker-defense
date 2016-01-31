@@ -106,17 +106,22 @@ public class SpawnWaveController : MonoBehaviour {
 
     public void Reset()
     {
-        foreach (Enemy enemy in SpawnedEnemies)
-        {
-            if(enemy)
-                Destroy(enemy.gameObject);
-        }
-        SpawnedEnemies.Clear();
+        ClearEnemies();
 
         EnemiesKilledThisWave = 0;
         EnemiesSpawnedThisWave = 0;
         CurrentSpawnTime = 0;
         NextSpawnTime = 0;
+    }
+
+    public void ClearEnemies()
+    {
+        foreach (Enemy enemy in SpawnedEnemies)
+        {
+            if (enemy)
+                Destroy(enemy.gameObject);
+        }
+        SpawnedEnemies.Clear();
     }
 
     void ChooseNextSpawnTime()
