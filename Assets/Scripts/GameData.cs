@@ -97,7 +97,9 @@ public static class GameData
            cost: l => l * 200,
            apply: p =>
            {
-               p.MaxHealth += 10;
+               int upAmount = 10;
+               p.MaxHealth += upAmount;
+               p.CurrentHealth += upAmount;
                return true;
            },
            maxLevel: 10),
