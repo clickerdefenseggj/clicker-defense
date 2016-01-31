@@ -110,12 +110,12 @@ public class Enemy : MonoBehaviour
             var ppc = other.gameObject.GetComponent<PropProjectileCollider>();
             if (ppc)
             {
-                Hit();
+                //Hit();
             }
         }
     }
 
-    private void Hit()
+    public void Hit()
     {
         if (isDead)
             return;

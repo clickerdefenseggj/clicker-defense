@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class PropProjectile : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PropProjectile : MonoBehaviour
     GameObject destLoc;
     Vector3 tanStart;
     Vector3 tanEnd;
+
+    private HashSet<Enemy> damaged = new HashSet<Enemy>();
 
     public static PropProjectile Create(Vector3 origin, Vector3 destination)
     {
@@ -78,6 +81,13 @@ public class PropProjectile : MonoBehaviour
         if (deathTimer > lingerTime)
         {
             deathTimer = lingerTime;
+        }
+
+        var enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy && !damaged.Contains(enemy))
+        {
+            damaged.Add(enemy);
+            enemy.Hit();
         }
     }
 }
