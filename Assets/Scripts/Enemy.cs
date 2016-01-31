@@ -133,9 +133,10 @@ public class Enemy : MonoBehaviour
             yield break;
 
         agent.speed = 0.0f;
+        PlayWalk(false);
         yield return new WaitForSeconds(stunDuration);
         agent.speed = Template.speed;
-        PlayWalk(false);
+        PlayWalk(true);
     }
 
     public void WaitToDie()
