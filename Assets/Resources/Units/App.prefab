@@ -138,6 +138,7 @@ MonoBehaviour:
   testRaycastDistance: 50
   agent: {fileID: 0}
   playerBase: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
   clickLayerMask:
     serializedVersion: 2
     m_Bits: 256

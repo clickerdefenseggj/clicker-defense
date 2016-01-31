@@ -1007,6 +1007,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae89f406f54e5ed45b690be423406ee1, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1123950870 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 407608, guid: ae89f406f54e5ed45b690be423406ee1, type: 2}
+  m_PrefabInternal: {fileID: 994299977}
 --- !u!1 &1383376313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,34 +1139,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: playerBase
-      value: 
-      objectReference: {fileID: 178949402}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: GameplaySkybox
-      value: 
-      objectReference: {fileID: 515955316}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: DirectionalLights.Array.data[0]
-      value: 
-      objectReference: {fileID: 787184353}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: DirectionalLights.Array.data[1]
-      value: 
-      objectReference: {fileID: 771296204}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: DirectionalLights.Array.data[2]
-      value: 
-      objectReference: {fileID: 2110400563}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: DirectionalLights.Array.data[3]
-      value: 
-      objectReference: {fileID: 1430421100}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: DirectionalLights.Array.data[4]
-      value: 
-      objectReference: {fileID: 515463402}
     - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: SpawnLocations.Array.data[0]
       value: 
@@ -1187,6 +1163,38 @@ Prefab:
       propertyPath: MovementDestinations.Array.data[2]
       value: 
       objectReference: {fileID: 939489102}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: playerBase
+      value: 
+      objectReference: {fileID: 178949402}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: projectileSpawnPoint
+      value: 
+      objectReference: {fileID: 1123950870}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: GameplaySkybox
+      value: 
+      objectReference: {fileID: 515955316}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 787184353}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[1]
+      value: 
+      objectReference: {fileID: 771296204}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[2]
+      value: 
+      objectReference: {fileID: 2110400563}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[3]
+      value: 
+      objectReference: {fileID: 1430421100}
+    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: DirectionalLights.Array.data[4]
+      value: 
+      objectReference: {fileID: 515463402}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d4206790d77a66479199446359f347e, type: 2}
   m_IsPrefabParent: 0
