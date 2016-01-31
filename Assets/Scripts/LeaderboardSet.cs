@@ -23,6 +23,7 @@ public class LeaderboardSet : Set {
                     scoreItem.NameText.text = playerName;
                     scoreItem.ScoreText.text = score;
                     scoreItem.transform.SetParent(ScoresAnchor);
+                    scoreItem.transform.localScale = Vector3.one;
                 }
             }
             else {
