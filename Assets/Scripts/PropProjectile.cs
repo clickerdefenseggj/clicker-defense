@@ -53,7 +53,9 @@ public class PropProjectile : MonoBehaviour
         // PHYSICS
         Vector3 dx = destination - origin;
 
-        float airTime = Mathf.Clamp(dx.magnitude * 0.15f, 0.1f, .25f);
+        Debug.Log(dx.magnitude);
+
+        float airTime = Mathf.Clamp(dx.magnitude * 0.025f, 0.1f, 2f);
 
         Vector3 planeVelocity = dx / airTime;
         planeVelocity.y = (dx.y - 0.5f * Physics.gravity.y * airTime * airTime) / airTime;
