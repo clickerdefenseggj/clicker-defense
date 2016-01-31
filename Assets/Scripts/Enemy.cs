@@ -116,12 +116,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Hit()
+    public void Hit(float damage = 100)
     {
         if (isDead)
             return;
 
-        ApplyDamage(100);
+        ApplyDamage(damage);
 
         // Stun coroutine
         StartCoroutine(Stun(1));
