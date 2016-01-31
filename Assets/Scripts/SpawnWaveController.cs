@@ -136,4 +136,27 @@ public class SpawnWaveController : MonoBehaviour {
             CurrentEnemy.UnPause();
         }
     }
+
+    public Enemy GetOnScreenEnemy()
+    {
+        Enemy Result = null;
+        float HighestX = float.NegativeInfinity;
+        
+        foreach(Enemy CurrentEnemy in SpawnedEnemies)
+        {
+            if(CurrentEnemy.transform.position.x > HighestX)
+            {
+                HighestX = CurrentEnemy.transform.position.x;
+                Result = CurrentEnemy;
+            }
+        }
+
+        // HACK (zesty): This is a magic number because of the screen size.
+        if(HighestX < -3)
+        {
+            return null;
+        }
+
+        return Result;
+    }
 }

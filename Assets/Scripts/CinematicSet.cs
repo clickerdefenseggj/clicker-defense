@@ -15,7 +15,8 @@ public class CinematicSet : Set
     public enum Speaker
     {
         King,
-        Guard
+        Guard, 
+        Enemy
     }
 
     [System.Serializable]
@@ -41,6 +42,7 @@ public class CinematicSet : Set
 
     public Text GuardTextBox;
     public Text KingTextBox;
+    public Text EnemyTextBox;
 
     private Conversation Conv;
     private Sentence CurSentence;
@@ -56,8 +58,7 @@ public class CinematicSet : Set
         // Disable player input
         // Hide castle UI
 
-        // TODO (zesty): Handle other enum types
-        
+        // Handle enum types
         switch(CinematicType)
         {
             case Type.HoarderConversation:
@@ -70,12 +71,31 @@ public class CinematicSet : Set
                 break;
         }
 
+        // TESTING
+        //Conv = GameData.Cinematics[Type.RandomExclamation][3];
+
         LetterDelay = Conv.LetterDelay;
         TimeToNextLetter = LetterDelay;
 
         SentenceIndex = 0;
         LetterIndex = 0;
         CurSentence = Conv.Sentences[SentenceIndex];
+
+        if(CurSentence.OwningTextBox == Speaker.Enemy)
+        {
+            Enemy Talker = App.inst.SpawnController.GetOnScreenEnemy();
+
+            // No good enemy was found for text
+            if(Talker == null)
+            {
+                EndCinematic();
+                return;
+            }
+
+            Vector3 ViewportLocation = Camera.main.WorldToViewportPoint(Talker.transform.position);
+            EnemyTextBox.rectTransform.anchoredPosition = ViewportLocation;
+            print("(zesty): VPL = " + ViewportLocation);
+        }
 
         CurTextBox = GetTextBox(CurSentence.OwningTextBox);
         SetTextBoxVisible(CurTextBox, true);
@@ -93,7 +113,6 @@ public class CinematicSet : Set
 	// Use this for initialization
 	void Start () 
     {
-        print("Begin cine...");
 	}
 	
 	// Update is called once per frame
@@ -127,7 +146,6 @@ public class CinematicSet : Set
                 ++SentenceIndex;
                 if(SentenceIndex == Conv.Sentences.Count)
                 {
-                    print("(zesty) Cinematic complete...");
                     SetTextBoxVisible(CurTextBox, false);
                     EndCinematic();
                 }
@@ -162,15 +180,19 @@ public class CinematicSet : Set
     {
         switch(TheSpeaker)
         {
+                // Commenting out the breaks to remove warnings about unreachable code
             case Speaker.Guard:
                 return GuardTextBox;
                 //break;
             case Speaker.King:
                 return KingTextBox;
                 //break;
+            case Speaker.Enemy:
+                return EnemyTextBox;
+                //break;
         }
 
-        print("(zesty): ERROR!  Data file has bad speaker enums set.");
+        Debug.LogError("(zesty): ERROR!  Data file has bad speaker enums set.");
         return null;
     }
 }

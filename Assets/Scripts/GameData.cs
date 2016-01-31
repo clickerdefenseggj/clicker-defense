@@ -61,6 +61,13 @@ public static class GameData
                             new CinematicSet.Sentence() { Words = "Not the gumdrop buttons!", OwningTextBox = CinematicSet.Speaker.King}
                         },
                         LetterDelay = 0.05f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "Where are they getting these things from?!", OwningTextBox = CinematicSet.Speaker.Enemy}
+                        },
+                        LetterDelay = 0.05f,
                     }
                 }
             }
