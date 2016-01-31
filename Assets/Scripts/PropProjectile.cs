@@ -50,12 +50,10 @@ public class PropProjectile : MonoBehaviour
 
     public void Launch()
     {
-        //StartCoroutine(LaunchRoutine());
-
         // PHYSICS
         Vector3 dx = destination - origin;
 
-        float airTime = Mathf.Clamp(dx.magnitude * 0.15f, 0.1f, 2f);
+        float airTime = Mathf.Clamp(dx.magnitude * 0.15f, 0.1f, .25f);
 
         Vector3 planeVelocity = dx / airTime;
         planeVelocity.y = (dx.y - 0.5f * Physics.gravity.y * airTime * airTime) / airTime;
@@ -74,38 +72,10 @@ public class PropProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        float lingerTime = 1.5f;
+        float lingerTime = 0.2f;
         if (deathTimer > lingerTime)
         {
             deathTimer = lingerTime;
         }
-    }
-
-    public IEnumerator LaunchRoutine()
-    {
-        // Create locators, point them at each other, find tangents
-        originLoc = new GameObject();
-        originLoc.name = "Origin";
-        destLoc = new GameObject();
-        destLoc.name = "Destination";
-        originLoc.transform.SetParent(transform);
-        destLoc.transform.SetParent(transform);
-        originLoc.transform.position = origin;
-        destLoc.transform.position = destination;
-
-        originLoc.transform.LookAt(destLoc.transform);
-        destLoc.transform.LookAt(originLoc.transform);
-        tanStart = Quaternion.AngleAxis(-67.5f, originLoc.transform.right) * originLoc.transform.forward * 15.0f;
-        tanEnd = Quaternion.AngleAxis(-67.5f, destLoc.transform.right) * destLoc.transform.forward;
-
-        while (Time.realtimeSinceStartup <= endTime)
-        {
-            float interpolant = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / launchDuration);
-
-            transform.position = App.GetHermiteCurvePoint(interpolant, origin, destination, tanStart, tanEnd);
-            yield return null;
-        }
-
-        //Destroy(gameObject);
     }
 }
