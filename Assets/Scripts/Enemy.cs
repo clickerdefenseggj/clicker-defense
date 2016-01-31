@@ -116,12 +116,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Hit()
+    public void Hit(float damage = 100)
     {
         if (isDead)
             return;
 
-        ApplyDamage(100);
+        ApplyDamage(damage);
 
         // Stun coroutine
         StartCoroutine(Stun(1));
@@ -133,9 +133,10 @@ public class Enemy : MonoBehaviour
             yield break;
 
         agent.speed = 0.0f;
+        PlayWalk(false);
         yield return new WaitForSeconds(stunDuration);
         agent.speed = Template.speed;
-        PlayWalk(false);
+        PlayWalk(true);
     }
 
     public void WaitToDie()

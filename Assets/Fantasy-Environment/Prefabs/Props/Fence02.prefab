@@ -11,6 +11,8 @@ GameObject:
   - 33: {fileID: 3393008}
   - 23: {fileID: 2383806}
   - 65: {fileID: 6547564}
+  - 114: {fileID: 11461550}
+  - 54: {fileID: 5424790}
   m_Layer: 0
   m_Name: Fence02
   m_TagString: Untagged
@@ -64,6 +66,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103778}
   m_Mesh: {fileID: 4300000, guid: 5c58a9cceada53d41bd38c7e200da92b, type: 3}
+--- !u!54 &5424790
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103778}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6547564
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -76,13 +93,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.37369412, y: 2.472341, z: 7.5953517}
   m_Center: {x: 0.01064115, y: 1.2365294, z: 0.006669283}
+--- !u!114 &11461550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433f7a3cf00a37d42bb9c265498c7c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageValue: 100
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: rigidBody
+      value: 
+      objectReference: {fileID: 5422528, guid: 406a7620f38958e4c9b7696097f93d32, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103778}

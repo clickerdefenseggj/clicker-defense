@@ -19,8 +19,15 @@ public class MainMenuSet : Set
 	// Update is called once per frame
 	void Update ()
     {
-	
-	}
+        if (Input.GetKey("escape"))
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+            Application.Quit();
+        }
+    }
 
     public void OnStartPressed()
     {
@@ -51,6 +58,15 @@ public class MainMenuSet : Set
         Player.Inst.SetName(NameText);
 
         NamePopup.SetActive(false);
+    }
+
+    public void OnExitPressed()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+        Application.Quit();
     }
 
 }

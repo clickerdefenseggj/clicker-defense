@@ -3,48 +3,47 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PropProjectile : MonoBehaviour
 {
-    [SerializeField]
-    Rigidbody rigidBody;
-    float deathTimer = float.PositiveInfinity;
+    public int DamageValue = 100;
 
-    [NonSerialized] public const float launchDuration = 0.25f;
-    [NonSerialized] public float startTime;
-    [NonSerialized] public float endTime;
-    public Rigidbody rb;
+    new Rigidbody rigidbody;
+
     Vector3 origin;
     Vector3 destination;
-    GameObject originLoc;
-    GameObject destLoc;
-    Vector3 tanStart;
-    Vector3 tanEnd;
+    float deathTimer = float.PositiveInfinity;
 
     private HashSet<Enemy> damaged = new HashSet<Enemy>();
     bool hasPlayedSound = false;
 
+    void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     public static PropProjectile Create(Vector3 origin, Vector3 destination)
     {
-        var prop = App.Create("PropProjectile").GetComponent<PropProjectile>();
+        var prop = ProjectileFactory.inst.InstantiateRandom();
+        //var prop = App.Create("PropProjectile").GetComponent<PropProjectile>();
         if (prop)
         {
-            var ppc = App.Create("PropProjectileCollider").GetComponent<PropProjectileCollider>();
-            if (ppc)
-            {
-                ppc.transform.position = destination;
-            }
-
+            //var ppc = App.Create("PropProjectileCollider").GetComponent<PropProjectileCollider>();
+            //if (ppc)
+            //{
+            //    ppc.transform.position = destination;
+            //}
 
             prop.gameObject.transform.position = prop.origin = origin;
             prop.destination = destination;
             //// This doesn't work for pause
-            prop.startTime = Time.realtimeSinceStartup;
-            prop.endTime = Time.realtimeSinceStartup + launchDuration;
+            //prop.startTime = Time.realtimeSinceStartup;
+            //prop.endTime = Time.realtimeSinceStartup + launchDuration;
 
             var dir = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f));
             dir.Normalize();
             float mag = UnityEngine.Random.Range(150.0f, 300.0f);
-            prop.rb.AddTorque(dir * mag);
+            prop.rigidbody.AddTorque(dir * mag);
 
             prop.Launch();
         }
@@ -55,16 +54,20 @@ public class PropProjectile : MonoBehaviour
     public void Launch()
     {
         // PHYSICS
-        Vector3 dx = destination - origin;
+        // Calculates initial velocity to form an arc with gravity that goes through destination at airTime
+        // So airtime and the value of gravity controls how high it arcs
 
-        Debug.Log(dx.magnitude);
+        Vector3 deltaPosition = destination - origin;
+        //Debug.Log(deltaPosition.magnitude);
 
-        float airTime = Mathf.Clamp(dx.magnitude * 0.025f, 0.1f, 2f);
+        float airTime = Mathf.Clamp(deltaPosition.magnitude * 0.025f, 0.1f, 2f);
 
-        Vector3 planeVelocity = dx / airTime;
-        planeVelocity.y = (dx.y - 0.5f * Physics.gravity.y * airTime * airTime) / airTime;
+        // horizontal velcity: just distance by time
+        Vector3 velocity = deltaPosition / airTime;
+        // vertical velocity: solve gravity parabola (0.5*g*t^2 + v0*t + p0) for v0
+        velocity.y = (deltaPosition.y - 0.5f * Physics.gravity.y * airTime * airTime) / airTime;
 
-        rigidBody.velocity = planeVelocity;
+        rigidbody.velocity = velocity;
     }
 
     void Update()
@@ -78,7 +81,7 @@ public class PropProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        float lingerTime = 0.2f;
+        float lingerTime = 1f;
         if (deathTimer > lingerTime)
         {
             deathTimer = lingerTime;
@@ -98,7 +101,7 @@ public class PropProjectile : MonoBehaviour
         if (enemy && !damaged.Contains(enemy))
         {
             damaged.Add(enemy);
-            enemy.Hit();
+            enemy.Hit(DamageValue);
         }
     }
 }
