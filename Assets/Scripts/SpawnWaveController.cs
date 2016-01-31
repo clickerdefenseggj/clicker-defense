@@ -49,37 +49,41 @@ public class SpawnWaveController : MonoBehaviour {
                     // Pick a random template
                     EnemyType template = (EnemyType)Random.Range(0, GameData.enemyTemplates.Count);
 
-                    // Spawn an enemy
-                    GameObject enemyGO = App.Create("Units/" + GameData.enemyTemplates[template].name + "/" + GameData.enemyTemplates[template].name);
+                    // Pick a random lane
+                    int lane = Random.Range(0, NUM_LANES);
 
-                    if (!enemyGO)
+                    if (lane < SpawnLocations.Length && SpawnLocations[lane] != null)
                     {
-                        Debug.Log("Failed to find prefab: " + GameData.enemyTemplates[0].name);
-                        return;
-                    }
-                    else
-                    {
-                        // Pick a random lane
-                        int lane = Random.Range(0, NUM_LANES);
+                        // Spawn an enemy
+                        GameObject enemyGO = App.Create("Units/" + GameData.enemyTemplates[template].name + "/" + GameData.enemyTemplates[template].name);
 
-                        Debug.Log("Successfully created enemy: " + GameData.enemyTemplates[template].name);
-                        enemyGO.transform.position = SpawnLocations[lane].transform.position;
-
-                        Enemy newEnemy = enemyGO.GetComponent<Enemy>();
-                        if (newEnemy)
-                            newEnemy.Initialize(template, MovementDestinations[lane].transform.position);
+                        if (!enemyGO)
+                        {
+                            Debug.Log("Failed to find prefab: " + GameData.enemyTemplates[0].name);
+                            return;
+                        }
                         else
-                            Debug.Log("No Enemy component on: " + enemyGO);
+                        {
+                            enemyGO.transform.position = SpawnLocations[lane].transform.position;
+                            Debug.Log("Successfully created enemy: " + GameData.enemyTemplates[template].name + " at pos = " + SpawnLocations[lane].transform.position);
 
-                        NavMeshAgent newAgent = enemyGO.GetComponent<NavMeshAgent>();
-                        if (newAgent)
-                            newAgent.SetDestination(MovementDestinations[lane].transform.position);
+                            Enemy newEnemy = enemyGO.GetComponent<Enemy>();
+                            if (newEnemy)
+                                newEnemy.Initialize(template, MovementDestinations[lane].transform.position);
+                            else
+                                Debug.Log("No Enemy component on: " + enemyGO);
 
-                        EnemiesSpawnedThisWave++;
-                        SpawnedEnemies.Add(newEnemy);
+                            NavMeshAgent newAgent = enemyGO.GetComponent<NavMeshAgent>();
+                            if (newAgent)
+                            {
+                                newEnemy.destination = MovementDestinations[lane].transform.position;
+                                //newAgent.SetDestination(MovementDestinations[lane].transform.position);
+                            }
 
+                            EnemiesSpawnedThisWave++;
+                            SpawnedEnemies.Add(newEnemy);
+                        }
                     }
-
                     // Reset spawn timer
                     CurrentSpawnTime = 0;
                     ChooseNextSpawnTime();

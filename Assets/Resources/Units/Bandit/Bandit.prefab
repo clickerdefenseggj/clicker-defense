@@ -1404,6 +1404,7 @@ MonoBehaviour:
   CurrentAttackTimer: 0
   animator: {fileID: 9594272}
   CashValue: 100
+  destination: {x: 0, y: 0, z: 0}
 --- !u!136 &13616330
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1496,7 +1497,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
@@ -1552,6 +1553,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_AngularSpeed
       value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

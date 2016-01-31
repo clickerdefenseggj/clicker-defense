@@ -65,6 +65,11 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        //#debug
+#if UNITY_EDITOR
+        return;
+#endif
+
         CurrentHealth -= damage;
 
         if (CurrentHealth <= 0 && App.inst.IsRunning)

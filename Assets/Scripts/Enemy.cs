@@ -18,13 +18,30 @@ public class Enemy : MonoBehaviour
     Vector3 AttackTarget;
     public Animator animator;
 
-    float MaxAttackRangeSquared = 5;
+    float MaxAttackRangeSquared = 25.0f;
     int lastAttackIndex;
     public int CashValue = 10;
     bool isDead = false;
+    public Vector3 destination;
 
     void Start ()
     {
+        // #debug
+#if UNITY_EDITOR
+        string templateName = "Unnamed";
+        if (Template != null)
+            templateName = Template.name;
+        Debug.Log(templateName + " was spawned at pos = " + transform.position);
+#endif
+
+        // #debug
+        if (agent)
+        {
+            agent.enabled = true;
+            agent.SetDestination(destination);
+        }
+
+
         //if (agent && App.inst.playerBase)
         //    agent.SetDestination(App.inst.playerBase.transform.position);
 
