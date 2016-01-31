@@ -26,6 +26,8 @@ public class App : MonoBehaviour
 
     public bool IsRunning = false;
 
+    public bool UseCannonball = true;
+
     void Awake()
     {
         if (m_inst == null)
@@ -161,6 +163,21 @@ public class App : MonoBehaviour
             GameplaySkybox.material = SkyboxMaterials[newSkybox];
             PreviousSkyboxNumber = newSkybox;
         }
+    }
+
+    public void PlayLevel1Cinematic()
+    {
+        StartCoroutine(PlayLevel1CinematicCoroutine());
+
+    }
+
+    public IEnumerator PlayLevel1CinematicCoroutine()
+    {
+        yield return new WaitForSeconds(4);
+
+        CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+        cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
+        UseCannonball = false;
     }
 
 }

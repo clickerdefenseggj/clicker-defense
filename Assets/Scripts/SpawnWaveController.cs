@@ -21,7 +21,6 @@ public class SpawnWaveController : MonoBehaviour {
 
     float CurrentSpawnTime = 0;
     float NextSpawnTime = 0;
-    float PausedSpawnTime = 0;
 
     public static int EnemiesSpawnedThisWave = 0;
     public static int EnemiesKilledThisWave = 0;
@@ -47,7 +46,12 @@ public class SpawnWaveController : MonoBehaviour {
                 if (CurrentSpawnTime > NextSpawnTime && EnemiesSpawnedThisWave < CurrentWave * NumEnemiesPerWaveIncrease)
                 {
                     // Pick a random template
-                    EnemyType template = (EnemyType)Random.Range(0, GameData.enemyTemplates.Count);
+                    EnemyType template;
+                    
+                    if(CurrentWave < 2)
+                        template = (EnemyType)Random.Range(0, CurrentWave);
+                    else
+                        template = (EnemyType)Random.Range(0, GameData.enemyTemplates.Count);
 
                     // Pick a random lane
                     int lane = Random.Range(0, NUM_LANES);
@@ -125,9 +129,8 @@ public class SpawnWaveController : MonoBehaviour {
     public void PauseEnemiesForCinematic()
     {
         print("(zesty): Pausing " + SpawnedEnemies.Count + " enemies");
-        PausedSpawnTime = CurrentSpawnTime;
-        CurrentSpawnTime = float.NegativeInfinity;
-        foreach(Enemy CurrentEnemy in SpawnedEnemies)
+        App.inst.IsRunning = false;
+        foreach (Enemy CurrentEnemy in SpawnedEnemies)
         {
             CurrentEnemy.Pause();
         }
@@ -135,7 +138,8 @@ public class SpawnWaveController : MonoBehaviour {
 
     public void UnpauseEnemiesAfterCinematic()
     {
-        CurrentSpawnTime = PausedSpawnTime;
+        ChooseNextSpawnTime();
+        App.inst.IsRunning = true;
         foreach (Enemy CurrentEnemy in SpawnedEnemies)
         {
             CurrentEnemy.UnPause();
