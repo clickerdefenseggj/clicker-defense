@@ -622,6 +622,88 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 126896, guid: ae89f406f54e5ed45b690be423406ee1, type: 2}
   m_PrefabInternal: {fileID: 675409773}
+--- !u!1001 &198256094
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22407356, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 88d2b83289cfcc64f8336c0ae6cd333c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &199831593
 Prefab:
   m_ObjectHideFlags: 0
@@ -1587,7 +1669,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 515955309}
   m_LocalRotation: {x: 0.42261833, y: 0, z: 0, w: 0.9063078}
-  m_LocalPosition: {x: 3.9, y: 81.1, z: -68.4}
+  m_LocalPosition: {x: 3.9, y: 96.04593, z: -80.94112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5943,6 +6025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Cash: 0
+  NumberKilled: 0
   MaxHealth: 100
   CurrentHealth: 0
 --- !u!4 &1687587766

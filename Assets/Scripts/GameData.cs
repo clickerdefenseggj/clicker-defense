@@ -21,12 +21,18 @@ public static class GameData
             { EnemyType.Goblin, new EnemyTemplate() { name = "Goblin", scoreValue = 7, goldValue = 15, maxHealth = 100, speed = 8.0f, damage = 3, attackRate = 1 } }
         };
 
-    public static Dictionary<string, AchievementTemplate> achievementTemplates =
-        new Dictionary<string, AchievementTemplate>()
+    public static List<AchievementTemplate> achievementTemplates =
+        new List<AchievementTemplate>()
         {
-            { "kill10enemies", new AchievementTemplate() { title = "Deterring the Masses", description = "Kill 10 enemy units", icon = "kill10"} },
-            { "kill25enemies", new AchievementTemplate() { title = "Expelling the Masses", description = "Kill 25 enemy units", icon = "kill25"} },
-            { "kill50enemies", new AchievementTemplate() { title = "Anihillating the Masses", description = "Kill 50 enemy units", icon = "kill50"} }
+            { new AchievementTemplate() { title = "Get out of here!", description = "Kill an enemy", icon = "kill1", type = "kill", number = 1, awarded = false} },
+            { new AchievementTemplate() { title = "Deterring the Masses", description = "Kill 10 enemy units", icon = "kill10", type = "kill", number = 10, awarded = false} },
+            { new AchievementTemplate() { title = "Expelling the Masses", description = "Kill 25 enemy units", icon = "kill25", type = "kill", number = 25, awarded = false} },
+            { new AchievementTemplate() { title = "Anihillating the Masses", description = "Kill 50 enemy units", icon = "kill50", type = "kill", number = 50, awarded = false} },
+            { new AchievementTemplate() { title = "The big five oh", description = "Score 50 points", icon = "score50", type = "score", number = 50, awarded = false} },
+            { new AchievementTemplate() { title = "What's this score thing?", description = "Score 100 points", icon = "score100", type = "score", number = 100, awarded = false} },
+            { new AchievementTemplate() { title = "Not just a number", description = "Score 250 points", icon = "score250", type = "score", number = 250, awarded = false} },
+            { new AchievementTemplate() { title = "The 500 club", description = "Score 500 points", icon = "score500", type = "score", number = 500, awarded = false} },
+            { new AchievementTemplate() { title = "A thousand point-y things", description = "Score 1000 points", icon = "score1000", type = "score", number = 1000, awarded = false} }
         };
 
     public static Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>> Cinematics =

@@ -52,6 +52,7 @@ GameObject:
   - 114: {fileID: 11460066}
   - 114: {fileID: 11444734}
   - 114: {fileID: 11487464}
+  - 114: {fileID: 11457334}
   m_Layer: 5
   m_Name: GameplaySet
   m_TagString: Untagged
@@ -104,7 +105,6 @@ GameObject:
   - 224: {fileID: 22450490}
   - 222: {fileID: 22261818}
   - 114: {fileID: 11444524}
-  - 114: {fileID: 11401130}
   m_Layer: 5
   m_Name: Achievement
   m_TagString: Untagged
@@ -146,17 +146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11401130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f389242e565dda54a96a4c970f427960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11402986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5882353, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0.5882353, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -355,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -504,6 +493,20 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: You have unlocked the following achievement, great job! Here is some even
     longer text!!!!
+--- !u!114 &11457334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f389242e565dda54a96a4c970f427960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopupWindow: {fileID: 169056}
+  Title: {fileID: 11433426}
+  Description: {fileID: 11445658}
 --- !u!114 &11460066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -712,7 +715,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &22428504
 RectTransform:
@@ -782,8 +785,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 127}
-  m_SizeDelta: {x: 305, y: 55}
+  m_AnchoredPosition: {x: -12, y: -92}
+  m_SizeDelta: {x: 205, y: 55}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &22499366
 RectTransform:

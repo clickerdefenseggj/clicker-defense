@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public string Name;
     public int Cash;
     private int Score;
+    public int NumberKilled = 0;
 
     public float MaxHealth = 100;
     public float CurrentHealth;

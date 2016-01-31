@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
         // Check if dead
         if (CurrentHealth <= 0 && gameObject)
         {
+            Player.Inst.NumberKilled++;
             SpawnWaveController.EnemiesKilledThisWave++;
             Player.Inst.AddScore(Template.scoreValue);
             Player.Inst.Cash += CashValue;
