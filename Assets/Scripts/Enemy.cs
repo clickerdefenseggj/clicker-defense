@@ -208,6 +208,10 @@ public class Enemy : MonoBehaviour
                     --attackIndex;
             }
 
+            int soundIndex = UnityEngine.Random.Range(1, 3);
+            SoundManager.PlaySfx("sfx/sword_slash_" + soundIndex);
+
+
             animator.SetBool("Attack" + attackIndex, true);
             lastAttackIndex = attackIndex;
         }
@@ -223,6 +227,9 @@ public class Enemy : MonoBehaviour
             int deathIndex = UnityEngine.Random.Range(1, 3);
             animator.SetBool("Death" + deathIndex, true);
         }
+
+        int soundIndex = UnityEngine.Random.Range(1, 4);
+        SoundManager.PlaySfx("sfx/death_grunt_" + soundIndex);
 
         if (agent)
             agent.speed = 0.0f;

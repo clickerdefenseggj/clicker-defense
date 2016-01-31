@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class App : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class App : MonoBehaviour
     public NavMeshAgent agent;
 
     public GameObject playerBase;
+
+    public static void PauseGameplayMusic()
+    {
+        if (currBgm != null)
+            currBgm.Stop();
+    }
+
     public Transform projectileSpawnPoint;
 
     public LayerMask clickLayerMask;
@@ -22,9 +30,24 @@ public class App : MonoBehaviour
     const int NUM_SKYBOXES = 5;
     public Material[] SkyboxMaterials = new Material[NUM_SKYBOXES];
     public Light[] DirectionalLights = new Light[NUM_SKYBOXES];
+
+    public static void PlayGameplayMusic()
+    {
+        if (currBgm != null)
+        {
+            currBgm.Play();
+        }
+        else
+        {
+            currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
+        }
+    }
+
     int PreviousSkyboxNumber = -1;
 
     public bool IsRunning = false;
+        
+    public static AudioSource currBgm;
 
     public bool UseCannonball = true;
 
@@ -37,12 +60,14 @@ public class App : MonoBehaviour
 	// Game entry point
 	void Start ()
     {
+        currBgm = SoundManager.PlayBgm("bgm/menu_music");
         SetManager.OpenSet<MainMenuSet>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        SoundManager.Update();
        
         if (IsRunning && Input.GetMouseButtonDown(0))
         { // if left button pressed...
@@ -104,6 +129,11 @@ public class App : MonoBehaviour
 
     public void EndLevel()
     {
+        PauseGameplayMusic();
+
+        if (currBgm)
+            currBgm.Stop();
+        currBgm = SoundManager.PlayBgm("bgm/menu_music");
 
         if (App.inst.IsRunning == false)
             return;
@@ -146,12 +176,12 @@ public class App : MonoBehaviour
 
             if (PreviousSkyboxNumber != -1)
             {
-                newSkybox = Random.Range(0, NUM_SKYBOXES);
+                newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
 
                 // never pick the same skybox twice
                 while (newSkybox == PreviousSkyboxNumber)
                 {
-                    newSkybox = Random.Range(0, NUM_SKYBOXES);
+                    newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
                 }
             }
 

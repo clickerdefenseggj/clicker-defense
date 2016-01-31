@@ -7,13 +7,17 @@ public class WaveNumberSet : Set
     public Text WaveNumberText;
 
     float CurrentTimeShown = 0;
-    float TimeToShow = 3.0f;
+    float TimeToShow = 4.0f;
 
     // Use this for initialization
     void Start()
     {
         if (WaveNumberText)
             WaveNumberText.text = "ROUND " + App.inst.SpawnController.CurrentWave.ToString();
+
+        App.PauseGameplayMusic();
+
+        SoundManager.PlayClip("sfx/wave_start");
 
         App.inst.IsRunning = false;
     }
@@ -25,8 +29,9 @@ public class WaveNumberSet : Set
 
         if (CurrentTimeShown > TimeToShow)
         {
-            //App.inst.ChooseRanomSkybox();
+            App.inst.ChooseRanomSkybox();
             App.inst.IsRunning = true;
+            App.PlayGameplayMusic();
 
             if (App.inst.SpawnController.CurrentWave == 1)
             {
@@ -34,10 +39,10 @@ public class WaveNumberSet : Set
             }
 
             CloseSet();
-
-
         }
     }
 
-   
+    public void OnDestroy()
+    {
+    }
 }

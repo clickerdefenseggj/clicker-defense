@@ -31,6 +31,10 @@ public class MainMenuSet : Set
 
     public void OnStartPressed()
     {
+        if (App.currBgm)
+            SoundManager.StopClip(App.currBgm);
+        App.currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
+
         new GameSparks.Api.Requests.DeviceAuthenticationRequest().SetDisplayName(Player.Inst.Name).Send((response) => {
             if (!response.HasErrors)
             {

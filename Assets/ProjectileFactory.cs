@@ -8,10 +8,10 @@ public class ProjectileFactory : MonoBehaviour
     public static ProjectileFactory inst { get { return m_Inst; } }
 
     [SerializeField]
-    PropProjectile cannonball;
+    public PropProjectile cannonball;
 
     [SerializeField]
-    List<PropProjectile> prefabs = new List<PropProjectile>();
+    public List<PropProjectile> prefabs = new List<PropProjectile>();
 
     void OnEnable()
     {
@@ -21,13 +21,13 @@ public class ProjectileFactory : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public PropProjectile InstantiateCannonball()
-    {
-        return Instantiate(cannonball);
-    }
-
     public PropProjectile InstantiateRandom()
     {
         return Instantiate(prefabs[Random.Range(0, prefabs.Count)]);
+    }
+
+    public PropProjectile InstantiateCannonball()
+    {
+        return Instantiate(cannonball);
     }
 }

@@ -69,7 +69,9 @@ public class Player : MonoBehaviour
         CurrentHealth -= damage;
 
         if (CurrentHealth <= 0 && App.inst.IsRunning)
+        {
             App.inst.EndLevel();
+        }
     }
 
     public void SetName(Text nameText)
