@@ -21,6 +21,7 @@ public class PropProjectile : MonoBehaviour
     Vector3 tanEnd;
 
     private HashSet<Enemy> damaged = new HashSet<Enemy>();
+    bool hasPlayedSound = false;
 
     public static PropProjectile Create(Vector3 origin, Vector3 destination)
     {
@@ -81,6 +82,16 @@ public class PropProjectile : MonoBehaviour
         if (deathTimer > lingerTime)
         {
             deathTimer = lingerTime;
+        }
+
+        if (!hasPlayedSound)
+        {
+            int soundIndex = UnityEngine.Random.Range(1, 3);
+            var src = SoundManager.PlaySfx("sfx/prop_crash_" + soundIndex);
+            float pitchIndex = UnityEngine.Random.Range(0.5f, 2.0f);
+            src.pitch = pitchIndex;
+
+            hasPlayedSound = true;
         }
 
         var enemy = collision.gameObject.GetComponent<Enemy>();

@@ -91,6 +91,8 @@ public class SpawnWaveController : MonoBehaviour {
             }
             else
             {
+                SoundManager.PlayClip("sfx/wave_won");
+
                 CurrentWave++;
                 EnemiesKilledThisWave = 0;
                 EnemiesSpawnedThisWave = 0;
