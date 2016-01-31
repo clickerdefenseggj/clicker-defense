@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     float MaxAttackRangeSquared = 5;
     int lastAttackIndex;
     public int CashValue = 10;
+    bool isDead = false;
 
     void Start ()
     {
@@ -42,18 +43,40 @@ public class Enemy : MonoBehaviour
 	
 	void Update ()
     {
+        if (isDead)
+            return;
+
+        // #debug
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SpawnWaveController.EnemiesKilledThisWave++;
+            Player.Inst.AddScore(Template.scoreValue);
+            Player.Inst.Cash += CashValue;
+
+            PlayDeath();
+            WaitToDie();
+            isDead = true;
+        }   
+#endif
+
+        // Check if dead
         if (CurrentHealth <= 0 && gameObject)
         {
             SpawnWaveController.EnemiesKilledThisWave++;
             Player.Inst.AddScore(Template.scoreValue);
             Player.Inst.Cash += CashValue;
 
-            Destroy(gameObject);
+            PlayDeath();
+            WaitToDie();
+            isDead = true;
         }
 
         // Attack player
         if (Vector3.SqrMagnitude(AttackTarget - transform.position) <= MaxAttackRangeSquared)
         {
+            PlayWalk(false);
+
             CurrentAttackTimer -= Time.deltaTime;
 
             if (CurrentAttackTimer <= 0)
@@ -67,11 +90,17 @@ public class Enemy : MonoBehaviour
 
     void ApplyDamage(float damage)
     {
+        if (isDead)
+            return;
+
         CurrentHealth -= damage;
     }
 
     public void OnTriggerEnter(Collider other)
     {
+        if (isDead)
+            return;
+
         if (other)
         {
             var ppc = other.gameObject.GetComponent<PropProjectileCollider>();
@@ -84,6 +113,9 @@ public class Enemy : MonoBehaviour
 
     private void Hit()
     {
+        if (isDead)
+            return;
+
         ApplyDamage(100);
 
         // Stun coroutine
@@ -92,31 +124,59 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Stun(float stunDuration)
     {
+        if (isDead)
+            yield break;
+
         agent.speed = 0.0f;
         yield return new WaitForSeconds(stunDuration);
         agent.speed = Template.speed;
         PlayWalk(false);
     }
 
+    public void WaitToDie()
+    {
+        StartCoroutine(WaitToDieRoutine());
+    }
+
+    public IEnumerator WaitToDieRoutine()
+    {
+        if (isDead)
+            yield break;
+
+        yield return new WaitForSeconds(2.0f);
+        Destroy(gameObject);
+
+        // Fade animation instead of purely destroy call?
+    }
+
     public void Pause()
     {
+        if (isDead)
+            return;
+
         agent.speed = 0.0f;
         PlayWalk(false);
     }
 
     public void UnPause()
     {
+        if (isDead)
+            return;
+
         agent.speed = Template.speed;
         PlayWalk(true);
     }
 
     public void PlayWalk(bool walk)
     {
+        if (isDead)
+            return;
+
         if (animator)
         {
             if (walk)
             {
-                animator.SetFloat("Velocity", 10.0f * Template.speed);
+                animator.SetFloat("Velocity", Mathf.Pow(Template.speed, 15.0f));
             }
             else
             {
@@ -127,6 +187,9 @@ public class Enemy : MonoBehaviour
 
     public void PlayAttack()
     {
+        if (isDead)
+            return;
+
         if (animator)
         {
             int attackIndex = UnityEngine.Random.Range(1, 5);
@@ -146,16 +209,23 @@ public class Enemy : MonoBehaviour
 
     public void PlayDeath()
     {
+        if (isDead)
+            return;
+
         if (animator)
         {
             int deathIndex = UnityEngine.Random.Range(1, 3);
             animator.SetBool("Death" + deathIndex, true);
         }
+
+        if (agent)
+            agent.speed = 0.0f;
     }
 
     public void PlayHurt()
     {
-
+        if (isDead)
+            return;
     }
 
 }
