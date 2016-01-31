@@ -16,9 +16,10 @@ public class Enemy : MonoBehaviour
 
     public float CurrentAttackTimer = 0;
     Vector3 AttackTarget;
+    public Animator animator;
 
     float MaxAttackRangeSquared = 5;
-
+    int lastAttackIndex;
     public int CashValue = 10;
 
     void Start ()
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
         agent.speed = Template.speed;
         AttackTarget = attackTarget;
         CurrentAttackTimer = Template.attackRate;
+        PlayWalk(true);
     }
 	
 	void Update ()
@@ -58,6 +60,7 @@ public class Enemy : MonoBehaviour
             {
                 Player.Inst.TakeDamage(Template.damage);
                 CurrentAttackTimer = Template.attackRate;
+                PlayAttack();
             }
         }
     }
@@ -92,16 +95,67 @@ public class Enemy : MonoBehaviour
         agent.speed = 0.0f;
         yield return new WaitForSeconds(stunDuration);
         agent.speed = Template.speed;
+        PlayWalk(false);
     }
 
     public void Pause()
     {
         agent.speed = 0.0f;
+        PlayWalk(false);
     }
 
     public void UnPause()
     {
         agent.speed = Template.speed;
+        PlayWalk(true);
+    }
+
+    public void PlayWalk(bool walk)
+    {
+        if (animator)
+        {
+            if (walk)
+            {
+                animator.SetFloat("Velocity", 10.0f * Template.speed);
+            }
+            else
+            {
+                animator.SetFloat("Velocity", 0.0f);
+            }
+        }
+    }
+
+    public void PlayAttack()
+    {
+        if (animator)
+        {
+            int attackIndex = UnityEngine.Random.Range(1, 5);
+
+            if (attackIndex == lastAttackIndex)
+            {
+                if (attackIndex < 4)
+                    ++attackIndex;
+                else if (attackIndex == 4)
+                    --attackIndex;
+            }
+
+            animator.SetBool("Attack" + attackIndex, true);
+            lastAttackIndex = attackIndex;
+        }
+    }
+
+    public void PlayDeath()
+    {
+        if (animator)
+        {
+            int deathIndex = UnityEngine.Random.Range(1, 3);
+            animator.SetBool("Death" + deathIndex, true);
+        }
+    }
+
+    public void PlayHurt()
+    {
+
     }
 
 }
