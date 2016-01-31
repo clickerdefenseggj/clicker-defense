@@ -80,10 +80,27 @@ public static class GameData
     {
        new Upgrade(
            "castle",
-           "repair"),
+           "repair",
+           cost: l => 100,
+           apply: p =>
+           {
+               if (p.CurrentHealth < p.MaxHealth)
+               {
+                   p.CurrentHealth = Mathf.Min(p.CurrentHealth + 10f, p.MaxHealth);
+                   return true;
+               }
+               return false;
+           }),
        new Upgrade(
            "castle",
-           "fortify"),
+           "fortify",
+           cost: l => l * 200,
+           apply: p =>
+           {
+               p.MaxHealth += 10;
+               return true;
+           },
+           maxLevel: 10),
        new Upgrade(
            "ammo",
            "area of effect"),
@@ -101,24 +118,51 @@ public static class GameData
 
 public class Upgrade
 {
-    public Func<Player, bool> filter;
     public string name;
     public string category;
+    public Func<Player, bool> filter;
+    public Func<int, int> cost;
+    public Func<Player, bool> apply;
 
-    public Upgrade(string category, string name, Func<Player, bool> filter = null)
+    public int maxLevel;
+
+    public Upgrade(string category, string name, Func<Player, bool> filter = null, Func<int, int> cost = null, Func<Player, bool> apply = null, int maxLevel = 0)
     {
         this.category = category;
         this.name = name;
+
         this.filter = filter;
+        this.cost = cost;
+        this.apply = apply;
+
+        this.maxLevel = maxLevel;
+    }
+
+    public int GetCost(Player player)
+    {
+        return cost != null ? cost(player.GetUpgradeLevel(name) + 1) : 0;
     }
 
     public bool IsAvailable(Player player)
     {
+        if (maxLevel > 0 && player.GetUpgradeLevel(name) >= maxLevel)
+            return false;
+
         if (filter != null && !filter(player))
             return false;
 
-
-
         return true;
+    }
+
+    public bool Purchase(Player player)
+    {
+        int cost = GetCost(player);
+        if (player.Cash > cost && apply != null && apply(player))
+        {
+            player.Cash -= cost;
+            player.SetUpgradeLevel(name, player.GetUpgradeLevel(name) + 1);
+            return true;
+        }
+        return false;
     }
 }

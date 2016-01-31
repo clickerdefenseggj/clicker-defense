@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 19536484}
   EnemyType: 0
+  CurrentAttackTimer: 0
+  CashValue: 50
 --- !u!136 &13657284
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -145,7 +147,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: CashValue
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150110}

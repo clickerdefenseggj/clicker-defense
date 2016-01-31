@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class StoreSet : Set
 {
-    public Text TitleText;
-    public RectTransform Content;
+    public Text titleText;
+    public RectTransform content;
+    public Text cashCountText;
 
     public StoreCategoryElement categoryPrefab;
     public StoreUpgradeElement upgradePrefab;
@@ -20,7 +21,7 @@ public class StoreSet : Set
         var upgrades = GameData.GetAvailibleUpgrades();
         var groups = upgrades.GroupBy(u => u.category);
 
-        foreach (var child in Content)
+        foreach (var child in content)
         {
             Destroy(((Transform)child).gameObject);
         }
@@ -28,7 +29,7 @@ public class StoreSet : Set
         foreach (var grouping in groups)
         {
             var cat = Instantiate(categoryPrefab);
-            cat.transform.SetParent(Content, false);
+            cat.transform.SetParent(content, false);
             cat.Initialize(grouping.Key);
 
             var anchor = cat.content;
@@ -38,6 +39,14 @@ public class StoreSet : Set
                 up.transform.SetParent(anchor, false);
                 up.Initialize(upgrade);
             }
+        }
+    }
+
+    void Update()
+    {
+        if (Player.Inst)
+        {
+            cashCountText.text = Player.Inst.Cash.ToString();
         }
     }
 
