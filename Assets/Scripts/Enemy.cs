@@ -46,20 +46,6 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
 
-        // #debug
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SpawnWaveController.EnemiesKilledThisWave++;
-            Player.Inst.AddScore(Template.scoreValue);
-            Player.Inst.Cash += CashValue;
-
-            PlayDeath();
-            WaitToDie();
-            isDead = true;
-        }   
-#endif
-
         // Check if dead
         if (CurrentHealth <= 0 && gameObject)
         {
