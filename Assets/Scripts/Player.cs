@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 class PlayerData
@@ -17,13 +18,14 @@ public class Player : MonoBehaviour
     static Player m_Inst;
 
     public string Name;
-    private int Cash;
+    public int Cash;
     private int Score;
 
     public float MaxHealth = 100;
     public float CurrentHealth;
-    
+
     // TODO: Player upgrades
+    public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
 
     // TODO: Player preferences
 
@@ -73,6 +75,18 @@ public class Player : MonoBehaviour
     {
         Name = nameText.text;
         Save();
+    }
+
+    public void SetUpgradeLevel(string name, int level)
+    {
+        upgradeLevels[name] = level;
+    }
+
+    public int GetUpgradeLevel(string name)
+    {
+        int value;
+        upgradeLevels.TryGetValue(name, out value);
+        return value;
     }
 
     public void Save()

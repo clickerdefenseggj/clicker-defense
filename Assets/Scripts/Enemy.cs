@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     float MaxAttackRangeSquared = 5;
 
+    public int CashValue = 10;
+
     void Start ()
     {
         //if (agent && App.inst.playerBase)
@@ -40,10 +42,11 @@ public class Enemy : MonoBehaviour
     {
         if (CurrentHealth <= 0 && gameObject)
         {
-            Destroy(gameObject);
             SpawnWaveController.EnemiesKilledThisWave++;
             Player.Inst.AddScore(Template.scoreValue);
+            Player.Inst.Cash += CashValue;
 
+            Destroy(gameObject);
         }
 
         // Attack player

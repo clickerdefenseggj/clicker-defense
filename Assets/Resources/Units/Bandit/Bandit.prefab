@@ -104,9 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d34a19e9cf5dca49a51b0b4182f6346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   agent: {fileID: 19515092}
-  enemyType: 0
+  EnemyType: 0
+  CurrentAttackTimer: 0
+  CashValue: 100
 --- !u!136 &13616330
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -158,6 +159,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CashValue
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
