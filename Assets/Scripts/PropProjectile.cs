@@ -24,7 +24,16 @@ public class PropProjectile : MonoBehaviour
 
     public static PropProjectile Create(Vector3 origin, Vector3 destination)
     {
-        var prop = ProjectileFactory.inst.InstantiateRandom();
+        PropProjectile prop;
+
+        if (App.inst.UseCannonball)
+        {
+            prop = ProjectileFactory.inst.InstantiateCannonball();
+        }
+        else
+        {
+           prop = ProjectileFactory.inst.InstantiateRandom();
+        }
         //var prop = App.Create("PropProjectile").GetComponent<PropProjectile>();
         if (prop)
         {
