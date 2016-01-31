@@ -13,6 +13,7 @@ public class App : MonoBehaviour
     public NavMeshAgent agent;
 
     public GameObject playerBase;
+    public Transform projectileSpawnPoint;
 
     public LayerMask clickLayerMask;
     public SpawnWaveController SpawnController;
@@ -56,7 +57,7 @@ public class App : MonoBehaviour
 
                     // Create the projectile
                     if (playerBase)
-                        PropProjectile.Create(playerBase.transform.position, hit.point);
+                        PropProjectile.Create(projectileSpawnPoint.position, hit.point);
 
                 }
 

@@ -4,6 +4,10 @@ using System;
 
 public class PropProjectile : MonoBehaviour
 {
+    [SerializeField]
+    Rigidbody rigidBody;
+    float deathTimer = float.PositiveInfinity;
+
     [NonSerialized] public const float launchDuration = 0.25f;
     [NonSerialized] public float startTime;
     [NonSerialized] public float endTime;
@@ -46,7 +50,35 @@ public class PropProjectile : MonoBehaviour
 
     public void Launch()
     {
-        StartCoroutine(LaunchRoutine());
+        //StartCoroutine(LaunchRoutine());
+
+        // PHYSICS
+        Vector3 dx = destination - origin;
+
+        float airTime = Mathf.Clamp(dx.magnitude * 0.15f, 0.1f, 2f);
+
+        Vector3 planeVelocity = dx / airTime;
+        planeVelocity.y = (dx.y - 0.5f * Physics.gravity.y * airTime * airTime) / airTime;
+
+        rigidBody.velocity = planeVelocity;
+    }
+
+    void Update()
+    {
+        deathTimer -= Time.deltaTime;
+        if (deathTimer <= 0f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        float lingerTime = 1.5f;
+        if (deathTimer > lingerTime)
+        {
+            deathTimer = lingerTime;
+        }
     }
 
     public IEnumerator LaunchRoutine()
@@ -74,6 +106,6 @@ public class PropProjectile : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
