@@ -12,6 +12,8 @@ GameObject:
   - 23: {fileID: 2324806}
   - 65: {fileID: 6531006}
   - 65: {fileID: 6574964}
+  - 114: {fileID: 11409980}
+  - 54: {fileID: 5449552}
   m_Layer: 0
   m_Name: Bench01
   m_TagString: Untagged
@@ -66,6 +68,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167214}
   m_Mesh: {fileID: 4300000, guid: 9caafb7628a22714791280559b1880d9, type: 3}
+--- !u!54 &5449552
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167214}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6531006
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -90,6 +107,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 1.07, z: 3.11}
   m_Center: {x: -0.51, y: 1.49, z: 0.000000059604645}
+--- !u!114 &11409980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433f7a3cf00a37d42bb9c265498c7c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageValue: 100
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -101,6 +130,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rigidBody
+      value: 
+      objectReference: {fileID: 5422528, guid: 406a7620f38958e4c9b7696097f93d32, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167214}
