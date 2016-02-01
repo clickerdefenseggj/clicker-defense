@@ -45,7 +45,10 @@ public class LeaderboardSet : Set {
 
         App.inst.IsRunning = true;
 
-        SetManager.OpenSet<GameplaySet>();
+
+        
+        if (App.gameplaySet == null)
+            App.gameplaySet = SetManager.OpenSet<GameplaySet>();
 
         CloseSet();
 

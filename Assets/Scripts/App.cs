@@ -12,6 +12,7 @@ public class App : MonoBehaviour
 
     public float testRaycastDistance = 50.0f;
     public NavMeshAgent agent;
+    public static GameplaySet gameplaySet;
 
     public GameObject playerBase;
 
