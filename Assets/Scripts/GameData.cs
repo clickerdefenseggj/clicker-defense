@@ -159,6 +159,27 @@ public static class GameData
                         },
                         LetterDelay = 0.1f,
                     },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: Where are all these guys coming from?!", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: Will this never end?!", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: I'm going to have to sleep at some point...", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
                 }
             }
         };
