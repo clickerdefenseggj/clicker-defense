@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     public int CashValue = 10;
     bool isDead = false;
     public Vector3 destination;
-    HashSet<PropProjectile> contactedProps = new HashSet<PropProjectile>();
 
     void Start ()
     {
@@ -122,12 +121,6 @@ public class Enemy : MonoBehaviour
     {
         if (isDead)
             return;
-
-        // Prevent more than one damage application from a single prop
-        if (contactedProps.Contains(prop))
-            return;
-
-        contactedProps.Add(prop);
 
         ApplyDamage(damage);
 
