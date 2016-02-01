@@ -138,9 +138,13 @@ public class App : MonoBehaviour
 
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.Space))
-            Time.timeScale = 5.0f;
+            Time.timeScale = 15.0f;
         else
             Time.timeScale = 1.0f;
+
+        if (Input.GetKeyDown(KeyCode.P))
+            App.inst.SpawnController.WaveCompleted();
+
 #endif
     }  
 
@@ -205,7 +209,7 @@ public class App : MonoBehaviour
             {
                 //newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
 
-                newSkybox = (SpawnController.CurrentWave-1 % 5);
+                newSkybox = ((SpawnController.CurrentWave - 1) % 5);
 
                 // never pick the same skybox twice
                 while (newSkybox == PreviousSkyboxNumber)

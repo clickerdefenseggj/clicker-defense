@@ -95,18 +95,23 @@ public class SpawnWaveController : MonoBehaviour {
             }
             else
             {
-                SoundManager.PlayClip("sfx/wave_won");
-
-                CurrentWave++;
-                EnemiesKilledThisWave = 0;
-                EnemiesSpawnedThisWave = 0;
-                //SetManager.OpenSet<WaveNumberSet>();
-                SetManager.OpenSet<StoreSet>();
+                WaveCompleted();
             }
         }
 
 
 	}
+
+    public void WaveCompleted()
+    {
+        SoundManager.PlayClip("sfx/wave_won");
+
+        CurrentWave++;
+        EnemiesKilledThisWave = 0;
+        EnemiesSpawnedThisWave = 0;
+        //SetManager.OpenSet<WaveNumberSet>();
+        SetManager.OpenSet<StoreSet>();
+    }
 
     public void Reset()
     {

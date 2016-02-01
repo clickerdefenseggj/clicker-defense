@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public interface I3DClickHandler
 {
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     public int CashValue = 10;
     bool isDead = false;
     public Vector3 destination;
+    HashSet<PropProjectile> contactedProps = new HashSet<PropProjectile>();
 
     void Start ()
     {
@@ -116,10 +118,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Hit(float damage = 100)
+    public void Hit(PropProjectile prop, float damage = 100)
     {
         if (isDead)
             return;
+
+        // Prevent more than one damage application from a single prop
+        if (contactedProps.Contains(prop))
+            return;
+
+        contactedProps.Add(prop);
 
         ApplyDamage(damage);
 

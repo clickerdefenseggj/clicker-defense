@@ -17,6 +17,7 @@ public class PropProjectile : MonoBehaviour
     private HashSet<Enemy> damaged = new HashSet<Enemy>();
     bool hasPlayedSound = false;
 
+
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -110,9 +111,10 @@ public class PropProjectile : MonoBehaviour
         if (enemy && !damaged.Contains(enemy))
         {
             damaged.Add(enemy);
-            enemy.Hit(DamageValue);
+            enemy.Hit(this, DamageValue);
         }
 
-        Destroy(gameObject);
+        // We want to see cool physics stuff pile up :)
+        //Destroy(gameObject);
     }
 }
