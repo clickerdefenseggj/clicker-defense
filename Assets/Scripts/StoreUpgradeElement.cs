@@ -20,6 +20,7 @@ public class StoreUpgradeElement : MonoBehaviour
         {
             titleText.text = upgrade.name.ToUpper();
         }
+
         UpdateState();
 	}
 
@@ -29,7 +30,8 @@ public class StoreUpgradeElement : MonoBehaviour
         {
             int cost = upgrade.GetCost(Player.Inst);
             costText.text = cost.ToString();
-            button.interactable = Player.Inst.Cash >= cost;
+
+            button.interactable = upgrade.CanPurchase(Player.Inst);
         }
     }
 

@@ -190,15 +190,8 @@ public static class GameData
            "castle",
            "repair",
            cost: l => 100,
-           apply: p =>
-           {
-               if (p.CurrentHealth < p.MaxHealth)
-               {
-                   p.CurrentHealth = Mathf.Min(p.CurrentHealth + 10f, p.MaxHealth);
-                   return true;
-               }
-               return false;
-           }),
+           filter: p => p.CurrentHealth < p.MaxHealth,
+           apply: p => p.CurrentHealth = Mathf.Min(p.CurrentHealth + 10f, p.MaxHealth)),
        new Upgrade(
            "castle",
            "fortify",
@@ -208,48 +201,31 @@ public static class GameData
                int upAmount = 10;
                p.MaxHealth += upAmount;
                p.CurrentHealth += upAmount;
-               return true;
            },
            maxLevel: 10),
        new Upgrade(
            "ammo",
-           "damage + 10",
-           cost: l => 500 + l * 500,
-           apply: p => 
-           {
-               p.DamageBonus += 10;
-               return true;
-           }, 
+           "damage\n+ 25",
+           cost: lv => 250 + (lv - 1) * 500,
+           apply: p => p.DamageBonus += 25, 
            maxLevel: 20),
        new Upgrade(
            "ammo",
-           "more junk / second",
-           cost: l => 500 + l * 500,
-           apply: p =>
-           {
-               p.DamageBonus += 10;
-               return true;
-           },
+           "junk / min\n+ 5",
+           cost: lv => lv * 250 + (int)Mathf.Pow(10, lv - 1) / 10,
+           apply: p => p.JunkPerMinute += 5,
            maxLevel: 20),
        new Upgrade(
            "ammo",
-           "max junk + 2",
-           cost: l => 100 + (int)Mathf.Pow(5, l),
-           apply: p =>
-           {
-               p.DamageBonus += 10;
-               return true;
-           },
+           "max junk\n+ 2",
+           cost: lv => 500 + (int)Mathf.Pow(5, lv - 1),
+           apply: p => p.MaxJunk += 2,
            maxLevel: 20),
        new Upgrade(
            "income",
-           "10% more cash",
-           cost: l => 500 + l * 1000,
-           apply: p =>
-           {
-               p.CashMultiplier += .1f;
-               return true;
-           }),
+           "+10% more cash",
+           cost: lv => 500 + lv * 500,
+           apply: p => p.CashMultiplier += .1f),
     };
 
     public static List<Upgrade> GetAvailibleUpgrades()
@@ -265,11 +241,11 @@ public class Upgrade
     public string category;
     public Func<Player, bool> filter;
     public Func<int, int> cost;
-    public Func<Player, bool> apply;
+    public Action<Player> apply;
 
     public int maxLevel;
 
-    public Upgrade(string category, string name, Func<Player, bool> filter = null, Func<int, int> cost = null, Func<Player, bool> apply = null, int maxLevel = 0)
+    public Upgrade(string category, string name, Func<int, int> cost = null, Func<Player, bool> filter = null, Action<Player> apply = null, int maxLevel = 0)
     {
         this.category = category;
         this.name = name;
@@ -291,17 +267,30 @@ public class Upgrade
         if (maxLevel > 0 && player.GetUpgradeLevel(name) >= maxLevel)
             return false;
 
+        return true;
+    }
+
+    public bool CanPurchase(Player player)
+    {
+        if (!IsAvailable(player))
+            return false;
+
         if (filter != null && !filter(player))
             return false;
 
-        return true;
+        return apply != null;
     }
 
     public bool Purchase(Player player)
     {
+        if (!CanPurchase(player))
+            return false;
+
         int cost = GetCost(player);
-        if (player.Cash >= cost && apply != null && apply(player))
+        if (player.Cash >= cost)
         {
+            apply(player);
+
             player.Cash -= cost;
             player.SetUpgradeLevel(name, player.GetUpgradeLevel(name) + 1);
             return true;
