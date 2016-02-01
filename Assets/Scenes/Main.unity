@@ -998,11 +998,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
-    - target: {fileID: 11455144, guid: 43648739f6a64604e97a7d3b6b3c42c4, type: 2}
-      propertyPath: cannonball
-      value: 
-      objectReference: {fileID: 11415932, guid: 270d4627ab173fb4485f30762e8c171f,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43648739f6a64604e97a7d3b6b3c42c4, type: 2}
   m_IsPrefabParent: 0
@@ -6424,6 +6419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56ec9f89ef3dec4e8e52e253854d6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthText: {fileID: 0}
   ScoreText: {fileID: 0}
   HealthFillbar: {fileID: 0}
 --- !u!222 &1785822522

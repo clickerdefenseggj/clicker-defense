@@ -48,5 +48,9 @@ public class LeaderboardSet : Set {
         SetManager.OpenSet<GameplaySet>();
 
         CloseSet();
+
+        if (App.currBgm)
+            App.currBgm.Stop();
+        App.currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
     }
 }
