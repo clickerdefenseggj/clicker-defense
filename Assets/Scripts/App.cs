@@ -205,7 +205,7 @@ public class App : MonoBehaviour
             {
                 //newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
 
-                newSkybox = (SpawnController.CurrentWave % 5) - 1;
+                newSkybox = (SpawnController.CurrentWave-1 % 5);
 
                 // never pick the same skybox twice
                 while (newSkybox == PreviousSkyboxNumber)
@@ -237,6 +237,11 @@ public class App : MonoBehaviour
         CinematicSet cs = SetManager.OpenSet<CinematicSet>();
         cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
         UseCannonball = false;
+    }
+
+    public void Reset()
+    {
+        UseCannonball = true;
     }
 
 }

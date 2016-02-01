@@ -45,6 +45,8 @@ public class LeaderboardSet : Set {
 
         App.inst.IsRunning = true;
 
+        App.inst.Reset();
+
 
         
         if (App.gameplaySet == null)

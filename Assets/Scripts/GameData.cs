@@ -50,7 +50,7 @@ public static class GameData
                             new CinematicSet.Sentence() { Words = "King: What is it?!  Can't you see we're being attacked!", OwningTextBox = CinematicSet.Speaker.King},
                             new CinematicSet.Sentence() { Words = "Guard: We are out of cannonballs...", OwningTextBox = CinematicSet.Speaker.Guard},
                             new CinematicSet.Sentence() { Words = "King: What do you mean, we're out of cannonballs?!", OwningTextBox = CinematicSet.Speaker.King},
-                            new CinematicSet.Sentence() { Words = "Guard: Well, we had to make room for all the stuff you are hoarding. There was no room for them.", OwningTextBox = CinematicSet.Speaker.Guard},
+                            new CinematicSet.Sentence() { Words = "Guard: Well, we had to make room for all the stuff you are hoarding.", OwningTextBox = CinematicSet.Speaker.Guard},
                             new CinematicSet.Sentence() { Words = "King: What do you suggest we do then?", OwningTextBox = CinematicSet.Speaker.King},
                             new CinematicSet.Sentence() { Words = "Guard: There's really only one option...", OwningTextBox = CinematicSet.Speaker.Guard},
                         },
