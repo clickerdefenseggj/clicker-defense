@@ -46,9 +46,9 @@ MonoBehaviour:
   CurrentHealth: 0
   DamageBonus: 0
   CashMultiplier: 1
-  JunkPerMinute: 33
-  CurrentJunk: 0
-  MaxJunk: 3
+  JunkPerMinute: 80
+  CurrentJunk: 5
+  MaxJunk: 5
   JunkRegenSeconds: 0
 --- !u!1001 &100100000
 Prefab:

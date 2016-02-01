@@ -32,6 +32,7 @@ public class CinematicSet : Set
         public List<Sentence> Sentences;
         public float LetterDelay;
         public bool Randomize;
+        public bool PauseGame;
     }
 
     public enum Type
@@ -43,6 +44,7 @@ public class CinematicSet : Set
     public Text GuardTextBox;
     public Text KingTextBox;
     public Text EnemyTextBox;
+    public Text TapToContinueText;
 
     private Conversation Conv;
     private Sentence CurSentence;
@@ -101,12 +103,15 @@ public class CinematicSet : Set
         SetTextBoxVisible(CurTextBox, true);
         bSentenceComplete = false;
 
-        App.inst.SpawnController.PauseEnemiesForCinematic();
+        if(Conv.PauseGame)
+            App.inst.SpawnController.PauseEnemiesForCinematic();
     }
 
     public void EndCinematic()
     {
-        App.inst.SpawnController.UnpauseEnemiesAfterCinematic();
+        if(Conv.PauseGame)
+            App.inst.SpawnController.UnpauseEnemiesAfterCinematic();
+
         SetManager.CloseSet(this);
     }
 
@@ -127,6 +132,14 @@ public class CinematicSet : Set
             if (LetterIndex >= CurSentence.Words.Length)
             {
                 bSentenceComplete = true;
+
+                if(Conv.PauseGame)
+                    TapToContinueText.gameObject.SetActive(true);
+                else
+                {
+                    StartCoroutine(HideExclamation());
+                }
+
             }
             else
             {
@@ -139,10 +152,11 @@ public class CinematicSet : Set
             CurTextBox.text = CurSentence.Words;
         }
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && Conv.PauseGame)
         {
             if(bSentenceComplete == true)
             {
+                TapToContinueText.gameObject.SetActive(false);
                 ++SentenceIndex;
                 if(SentenceIndex == Conv.Sentences.Count)
                 {
@@ -165,6 +179,7 @@ public class CinematicSet : Set
             else
             {
                 bSentenceComplete = true;
+                TapToContinueText.gameObject.SetActive(true);
             }
         }
 	}
@@ -194,5 +209,11 @@ public class CinematicSet : Set
 
         Debug.LogError("(zesty): ERROR!  Data file has bad speaker enums set.");
         return null;
+    }
+
+    private IEnumerator HideExclamation()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SetTextBoxVisible(CurTextBox, false);
     }
 }

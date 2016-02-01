@@ -1419,7 +1419,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11466560, guid: 2229263a063e335409672bd47266b368, type: 2}
       propertyPath: JunkPerMinute
-      value: 30
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2229263a063e335409672bd47266b368, type: 2}
@@ -2666,7 +2666,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 0.443
     m_Bias: 0.05

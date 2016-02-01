@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22448756}
   - 114: {fileID: 11436792}
+  - 114: {fileID: 11418990}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -161,6 +162,19 @@ MonoBehaviour:
   m_Spacing: 15
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+--- !u!114 &11418990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
 --- !u!114 &11426660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +247,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 750, y: 100}
-  m_Spacing: {x: 0, y: 10}
+  m_Spacing: {x: 0, y: -45}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &11437110

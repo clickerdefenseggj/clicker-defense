@@ -40,9 +40,9 @@ public static class GameData
         {
             // HOARDER CONVERSATION
             {
-                CinematicSet.Type.HoarderConversation, new List<CinematicSet.Conversation> () 
-                { 
-                    new CinematicSet.Conversation() 
+                CinematicSet.Type.HoarderConversation, new List<CinematicSet.Conversation> ()
+                {
+                    new CinematicSet.Conversation()
                     {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
@@ -54,7 +54,8 @@ public static class GameData
                             new CinematicSet.Sentence() { Words = "King: What do you suggest we do then?", OwningTextBox = CinematicSet.Speaker.King},
                             new CinematicSet.Sentence() { Words = "Guard: There's really only one option...", OwningTextBox = CinematicSet.Speaker.Guard},
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = true
                     }
                 }
             },
@@ -66,119 +67,136 @@ public static class GameData
                         {
                             new CinematicSet.Sentence() { Words = "king: I MIGHT NEED THAT LATER!  STOP!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.2f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: How about this, vile scum!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "king: Not the gumdrop buttons!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "Enemy: Where are they getting these things from?!", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "King: But that's a collector's item!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "King: *quiet sobbing*", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "Enemy: Have at you!", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "Enemy: I'll will strike you down", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
-                        LetterDelay = 0.05f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: I'm getting too old for this...", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "King: Don't touch my stuff!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "King: But I need my things...", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "King: Can't we just let them kill us?", OwningTextBox = CinematicSet.Speaker.King}
+                            new CinematicSet.Sentence() { Words = "King: Can't you see those are imporant?!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: Wow, some of these things are heavy!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: And I'll ha and a hi-yah and I'll throw stuff at them sir!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: Where are all these guys coming from?!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: Will this never end?!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
                             new CinematicSet.Sentence() { Words = "guard: I'm going to have to sleep at some point...", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
-                        LetterDelay = 0.1f,
+                        LetterDelay = 0.02f,
+                        PauseGame = false
                     },
                 }
             }
@@ -188,13 +206,13 @@ public static class GameData
     {
        new Upgrade(
            "castle",
-           "repair",
+           "repair\n10 dmg",
            cost: l => 100,
            filter: p => p.CurrentHealth < p.MaxHealth,
            apply: p => p.CurrentHealth = Mathf.Min(p.CurrentHealth + 10f, p.MaxHealth)),
        new Upgrade(
            "castle",
-           "fortify",
+           "fortify\n+10vhp",
            cost: l => l * 200,
            apply: p =>
            {
@@ -205,20 +223,20 @@ public static class GameData
            maxLevel: 10),
        new Upgrade(
            "ammo",
-           "damage\n+ 25",
+           "damage\n+25",
            cost: lv => 250 + (lv - 1) * 500,
            apply: p => p.DamageBonus += 25, 
            maxLevel: 20),
        new Upgrade(
            "ammo",
-           "junk / min\n+ 5",
+           "junk / min\n+5",
            cost: lv => lv * 250 + (int)Mathf.Pow(10, lv - 1) / 10,
            apply: p => p.JunkPerMinute += 5,
            maxLevel: 20),
        new Upgrade(
            "ammo",
-           "max junk\n+ 2",
-           cost: lv => 500 + (int)Mathf.Pow(5, lv - 1),
+           "max junk\n+2",
+           cost: lv => 500 * (int)Mathf.Pow(5, lv - 1),
            apply: p => p.MaxJunk += 2,
            maxLevel: 20),
        new Upgrade(

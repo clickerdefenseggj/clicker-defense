@@ -32,6 +32,7 @@ public class WaveNumberSet : Set
             App.inst.ChooseRanomSkybox();
             App.inst.IsRunning = true;
             App.PlayGameplayMusic();
+            App.inst.SpawnController.Reset();
 
             if (App.inst.SpawnController.CurrentWave == 1)
             {
