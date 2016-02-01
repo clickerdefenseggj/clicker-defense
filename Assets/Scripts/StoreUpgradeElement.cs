@@ -18,7 +18,7 @@ public class StoreUpgradeElement : MonoBehaviour
 
         if (upgrade != null)
         {
-            titleText.text = upgrade.name;
+            titleText.text = upgrade.name.ToUpper();
         }
         UpdateState();
 	}

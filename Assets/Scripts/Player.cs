@@ -25,7 +25,14 @@ public class Player : MonoBehaviour
     public float MaxHealth = 100;
     public float CurrentHealth;
 
-    // TODO: Player upgrades
+    public float DamageBonus = 0f;
+
+    public float CashMultiplier = 1f;
+
+    //public float JunkPerMinute;
+    //public int CurrentJunk;
+    //public int MaxJunk;
+
     public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
 
     // TODO: Player preferences
@@ -93,6 +100,11 @@ public class Player : MonoBehaviour
         int value;
         upgradeLevels.TryGetValue(name, out value);
         return value;
+    }
+
+    public void AddCash(int cashValue)
+    {
+        Cash += Mathf.FloorToInt(cashValue * CashMultiplier);
     }
 
     public void Save()

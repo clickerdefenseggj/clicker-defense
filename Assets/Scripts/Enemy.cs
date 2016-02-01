@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
             Player.Inst.NumberKilled++;
             SpawnWaveController.EnemiesKilledThisWave++;
             Player.Inst.AddScore(Template.scoreValue);
-            Player.Inst.Cash += CashValue;
+            Player.Inst.AddCash(CashValue);
 
             PlayDeath();
             WaitToDie();
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
 
-        ApplyDamage(damage);
+        ApplyDamage(damage + Player.Inst.DamageBonus);
 
         // Stun coroutine
         StartCoroutine(Stun(1));

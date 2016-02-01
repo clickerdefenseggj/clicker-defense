@@ -213,10 +213,43 @@ public static class GameData
            maxLevel: 10),
        new Upgrade(
            "ammo",
-           "area of effect"),
+           "damage + 10",
+           cost: l => 500 + l * 500,
+           apply: p => 
+           {
+               p.DamageBonus += 10;
+               return true;
+           }, 
+           maxLevel: 20),
        new Upgrade(
            "ammo",
-           "damage"),
+           "more junk / second",
+           cost: l => 500 + l * 500,
+           apply: p =>
+           {
+               p.DamageBonus += 10;
+               return true;
+           },
+           maxLevel: 20),
+       new Upgrade(
+           "ammo",
+           "max junk + 2",
+           cost: l => 100 + (int)Mathf.Pow(5, l),
+           apply: p =>
+           {
+               p.DamageBonus += 10;
+               return true;
+           },
+           maxLevel: 20),
+       new Upgrade(
+           "income",
+           "10% more cash",
+           cost: l => 500 + l * 1000,
+           apply: p =>
+           {
+               p.CashMultiplier += .1f;
+               return true;
+           }),
     };
 
     public static List<Upgrade> GetAvailibleUpgrades()
