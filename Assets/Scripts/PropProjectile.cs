@@ -12,7 +12,7 @@ public class PropProjectile : MonoBehaviour
 
     Vector3 origin;
     Vector3 destination;
-    float deathTimer = float.PositiveInfinity;
+    float deathTimer = 5f;
 
     private HashSet<Enemy> damaged = new HashSet<Enemy>();
     bool hasPlayedSound = false;

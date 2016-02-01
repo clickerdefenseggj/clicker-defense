@@ -38,8 +38,13 @@ public class PropListEditor
                     {
                         Debug.Log(objAsset);
 
-                        var colliders = objAsset.GetComponentsInChildren<MeshCollider>();
-                        foreach (var collider in colliders)
+                        var colliders = objAsset.GetComponentsInChildren<Collider>();
+                        // skip objects with no colliders
+                        if (colliders.Length < 1)
+                            goto dontadd;
+
+                        var meshColliders = objAsset.GetComponentsInChildren<MeshCollider>();
+                        foreach (var collider in meshColliders)
                         {
                             // skip no convex colliders
                             if (!collider.convex)
