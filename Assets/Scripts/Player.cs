@@ -29,9 +29,11 @@ public class Player : MonoBehaviour
 
     public float CashMultiplier = 1f;
 
-    //public float JunkPerMinute;
-    //public int CurrentJunk;
-    //public int MaxJunk;
+    public float JunkPerMinute = 5;
+    public int CurrentJunk;
+    public int MaxJunk = 5;
+
+    public float JunkRegenSeconds = 0f;
 
     public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
 
@@ -47,12 +49,28 @@ public class Player : MonoBehaviour
     void Start ()
     {
         CurrentHealth = MaxHealth;
+        CurrentJunk = MaxJunk;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
+        if (CurrentJunk < MaxJunk)
+        {
+            JunkRegenSeconds += Time.deltaTime;
+
+            float secondsPerJunk = 60f / JunkPerMinute;
+            while (CurrentJunk < MaxJunk && JunkRegenSeconds >= secondsPerJunk)
+            {
+                JunkRegenSeconds -= secondsPerJunk;
+                CurrentJunk++;
+            }
+        }
+        
+        if (CurrentJunk >= MaxJunk)
+        {
+            JunkRegenSeconds = 0f;
+        }
 	}
 
     public void Reset()

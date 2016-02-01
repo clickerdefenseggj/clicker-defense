@@ -79,30 +79,35 @@ public class App : MonoBehaviour
         SoundManager.Update();
        
         if (IsRunning && Input.GetMouseButtonDown(0))
-        { // if left button pressed...
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickLayerMask))
+        {
+            if (UseCannonball || Player.Inst.CurrentJunk > 0)
             {
-                if (hit.collider)
+                if (!UseCannonball)
+                    Player.Inst.CurrentJunk--;
+
+                // if left button pressed...
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickLayerMask))
                 {
-                    // Notify enemies that they have been clicked
-                    var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
-                    if (clickHandler != null)
-                        clickHandler.On3DClick();
+                    if (hit.collider)
+                    {
+                        // Notify enemies that they have been clicked
+                        var clickHandler = hit.collider.gameObject.GetComponent<I3DClickHandler>();
+                        if (clickHandler != null)
+                            clickHandler.On3DClick();
 
-                    // Create the projectile
-                    if (playerBase)
-                        PropProjectile.Create(projectileSpawnPoint.position, hit.point);
+                        // Create the projectile
+                        if (playerBase)
+                            PropProjectile.Create(projectileSpawnPoint.position, hit.point);
 
+                    }
+
+                    // the object identified by hit.transform was clicked
+                    // do whatever you want
                 }
-
-                // the object identified by hit.transform was clicked
-                // do whatever you want
             }
         }
-
-
 
         if (IsRunning && !UseCannonball)
         {
