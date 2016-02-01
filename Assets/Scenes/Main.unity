@@ -5201,14 +5201,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: SpawnLocations.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: MovementDestinations.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 470626, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5241,30 +5233,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: SpawnLocations.Array.data[0]
-      value: 
-      objectReference: {fileID: 1999830853}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: SpawnLocations.Array.data[1]
-      value: 
-      objectReference: {fileID: 149521753}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: SpawnLocations.Array.data[2]
-      value: 
-      objectReference: {fileID: 421978017}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: MovementDestinations.Array.data[0]
-      value: 
-      objectReference: {fileID: 1383376313}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: MovementDestinations.Array.data[1]
-      value: 
-      objectReference: {fileID: 1468235993}
-    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: MovementDestinations.Array.data[2]
-      value: 
-      objectReference: {fileID: 939489102}
     - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: playerBase
       value: 
@@ -5298,17 +5266,37 @@ Prefab:
       value: 
       objectReference: {fileID: 515463402}
     - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: SpawnLocations.Array.data[0]
+      value: 
+      objectReference: {fileID: 1999830853}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: SpawnLocations.Array.data[1]
+      value: 
+      objectReference: {fileID: 149521753}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: SpawnLocations.Array.data[2]
+      value: 
+      objectReference: {fileID: 421978017}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: SpawnLocations.Array.data[3]
       value: 
       objectReference: {fileID: 1209363374}
     - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: MovementDestinations.Array.data[0]
+      value: 
+      objectReference: {fileID: 1383376313}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: MovementDestinations.Array.data[1]
+      value: 
+      objectReference: {fileID: 1468235993}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
+      propertyPath: MovementDestinations.Array.data[2]
+      value: 
+      objectReference: {fileID: 939489102}
+    - target: {fileID: 11455620, guid: 6d4206790d77a66479199446359f347e, type: 2}
       propertyPath: MovementDestinations.Array.data[3]
       value: 
       objectReference: {fileID: 1776956136}
-    - target: {fileID: 11495548, guid: 6d4206790d77a66479199446359f347e, type: 2}
-      propertyPath: clickLayerMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d4206790d77a66479199446359f347e, type: 2}
   m_IsPrefabParent: 0

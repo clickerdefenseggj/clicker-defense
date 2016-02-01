@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elbow.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fingers2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Toes.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperLeg.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fingers1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - 4: {fileID: 473246}
   - 33: {fileID: 3381324}
   - 23: {fileID: 2310764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShieldIron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerLeg.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fingers2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandIK.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elbow.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FootIK.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 468564}
   - 137: {fileID: 13718248}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KnightIron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Toes.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 465252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperLeg.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - 114: {fileID: 11492914}
   - 195: {fileID: 19506092}
   - 136: {fileID: 13610854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandIK.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 465564}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403886}
   - 95: {fileID: 9559810}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KnightIron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerLeg.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fingers1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 471688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Knee.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Knee.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +617,7 @@ GameObject:
   - 4: {fileID: 465908}
   - 33: {fileID: 3345702}
   - 23: {fileID: 2390708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SwordIron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476208}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FootIK.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - 4: {fileID: 438356}
   - 23: {fileID: 2308824}
   - 33: {fileID: 3331198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,6 +1404,7 @@ MonoBehaviour:
   CurrentAttackTimer: 0
   animator: {fileID: 9559810}
   CashValue: 200
+  destination: {x: 0, y: 0, z: 0}
 --- !u!136 &13610854
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1544,6 +1545,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
