@@ -134,7 +134,7 @@ public class CinematicSet : Set
             }
         }
 
-        if(bSentenceComplete == true)
+        if(bSentenceComplete == true && CurTextBox)
         {
             CurTextBox.text = CurSentence.Words;
         }

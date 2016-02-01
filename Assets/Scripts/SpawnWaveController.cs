@@ -160,7 +160,7 @@ public class SpawnWaveController : MonoBehaviour {
         
         foreach(Enemy CurrentEnemy in SpawnedEnemies)
         {
-            if(CurrentEnemy.transform.position.x > HighestX)
+            if(CurrentEnemy && CurrentEnemy.transform.position.x > HighestX)
             {
                 HighestX = CurrentEnemy.transform.position.x;
                 Result = CurrentEnemy;

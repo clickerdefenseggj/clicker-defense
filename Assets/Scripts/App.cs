@@ -32,6 +32,12 @@ public class App : MonoBehaviour
     public Material[] SkyboxMaterials = new Material[NUM_SKYBOXES];
     public Light[] DirectionalLights = new Light[NUM_SKYBOXES];
 
+
+    float CurrentRandomExclamationTime = 0;
+    float NextExclamationTime = 0;
+    float RandomExclamationMin = 3;
+    float RandomExclamationMax = 10;
+
     public static void PlayGameplayMusic()
     {
         if (currBgm != null)
@@ -63,6 +69,8 @@ public class App : MonoBehaviour
     {
         currBgm = SoundManager.PlayBgm("bgm/menu_music");
         SetManager.OpenSet<MainMenuSet>();
+
+        NextExclamationTime = UnityEngine.Random.Range(RandomExclamationMin, RandomExclamationMax);
     }
 	
 	// Update is called once per frame
@@ -93,6 +101,24 @@ public class App : MonoBehaviour
                 // do whatever you want
             }
         }
+
+
+
+        if (IsRunning && !UseCannonball)
+        {
+            CurrentRandomExclamationTime += Time.deltaTime;
+
+            if (CurrentRandomExclamationTime >= NextExclamationTime)
+            {
+                CurrentRandomExclamationTime = 0;
+
+                CinematicSet cs = SetManager.OpenSet<CinematicSet>();
+                cs.BeginCinematic(CinematicSet.Type.RandomExclamation);
+
+                NextExclamationTime = UnityEngine.Random.Range(RandomExclamationMin, RandomExclamationMax);
+            }
+        }
+
 
         // ------------------------
         // Zesty Dev Hacks
@@ -177,7 +203,9 @@ public class App : MonoBehaviour
 
             if (PreviousSkyboxNumber != -1)
             {
-                newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
+                //newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
+
+                newSkybox = (SpawnController.CurrentWave % 5) - 1;
 
                 // never pick the same skybox twice
                 while (newSkybox == PreviousSkyboxNumber)

@@ -64,31 +64,101 @@ public static class GameData
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "I MIGHT NEED THAT LATER!  STOP!!", OwningTextBox = CinematicSet.Speaker.King}
+                            new CinematicSet.Sentence() { Words = "king: I MIGHT NEED THAT LATER!  STOP!", OwningTextBox = CinematicSet.Speaker.King}
                         },
-                        LetterDelay = 0.2f
+                        LetterDelay = 0.2f,
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "How about this, vile scum!", OwningTextBox = CinematicSet.Speaker.Guard}
+                            new CinematicSet.Sentence() { Words = "guard: How about this, vile scum!", OwningTextBox = CinematicSet.Speaker.Guard}
                         },
                         LetterDelay = 0.1f,
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "Not the gumdrop buttons!", OwningTextBox = CinematicSet.Speaker.King}
+                            new CinematicSet.Sentence() { Words = "king: Not the gumdrop buttons!", OwningTextBox = CinematicSet.Speaker.King}
                         },
                         LetterDelay = 0.05f,
                     },
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "Where are they getting these things from?!", OwningTextBox = CinematicSet.Speaker.Enemy}
+                            new CinematicSet.Sentence() { Words = "Enemy: Where are they getting these things from?!", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
                         LetterDelay = 0.05f,
-                    }
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "King: But that's a collector's item!", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.05f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "King: *quiet sobbing*", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.05f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "Enemy: Have at you!", OwningTextBox = CinematicSet.Speaker.Enemy}
+                        },
+                        LetterDelay = 0.05f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "Enemy: I'll will strike you down", OwningTextBox = CinematicSet.Speaker.Enemy}
+                        },
+                        LetterDelay = 0.05f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: I'm getting too old for this...", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "King: Don't touch my stuff!", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "King: But I need my things...", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "King: Can't we just let them kill us?", OwningTextBox = CinematicSet.Speaker.King}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: Wow, some of these things are heavy!", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
+                    new CinematicSet.Conversation() {
+                        Sentences = new List<CinematicSet.Sentence>()
+                        {
+                            new CinematicSet.Sentence() { Words = "guard: And I'll ha and a hi-yah and I'll throw stuff at them sir!", OwningTextBox = CinematicSet.Speaker.Guard}
+                        },
+                        LetterDelay = 0.1f,
+                    },
                 }
             }
         };
