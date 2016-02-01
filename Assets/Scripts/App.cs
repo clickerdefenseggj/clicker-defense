@@ -205,7 +205,7 @@ public class App : MonoBehaviour
             {
                 //newSkybox = UnityEngine.Random.Range(0, NUM_SKYBOXES);
 
-                newSkybox = (SpawnController.CurrentWave-1 % 5);
+                newSkybox = ((SpawnController.CurrentWave-1) % 5);
 
                 // never pick the same skybox twice
                 while (newSkybox == PreviousSkyboxNumber)

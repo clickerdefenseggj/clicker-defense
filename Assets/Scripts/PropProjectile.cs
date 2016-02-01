@@ -112,7 +112,6 @@ public class PropProjectile : MonoBehaviour
             damaged.Add(enemy);
             enemy.Hit(DamageValue);
         }
-
-        Destroy(gameObject);
+        
     }
 }
