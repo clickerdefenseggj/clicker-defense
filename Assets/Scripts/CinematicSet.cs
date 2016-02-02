@@ -83,22 +83,6 @@ public class CinematicSet : Set
         LetterIndex = 0;
         CurSentence = Conv.Sentences[SentenceIndex];
 
-        if(CurSentence.OwningTextBox == Speaker.Enemy)
-        {
-            Enemy Talker = App.inst.SpawnController.GetOnScreenEnemy();
-
-            // No good enemy was found for text
-            if(Talker == null)
-            {
-                EndCinematic();
-                return;
-            }
-
-            Vector3 ViewportLocation = Camera.main.WorldToViewportPoint(Talker.transform.position);
-            EnemyTextBox.rectTransform.anchoredPosition = ViewportLocation;
-            print("(zesty): VPL = " + ViewportLocation);
-        }
-
         CurTextBox = GetTextBox(CurSentence.OwningTextBox);
         SetTextBoxVisible(CurTextBox, true);
         bSentenceComplete = false;

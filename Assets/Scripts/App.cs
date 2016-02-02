@@ -12,7 +12,6 @@ public class App : MonoBehaviour
 
     public float testRaycastDistance = 50.0f;
     public NavMeshAgent agent;
-    public static GameplaySet gameplaySet;
 
     public GameObject playerBase;
 
@@ -109,6 +108,7 @@ public class App : MonoBehaviour
             }
         }
 
+        // Play random remarks during the gameplay
         if (IsRunning && !UseCannonball)
         {
             CurrentRandomExclamationTime += Time.deltaTime;
@@ -124,7 +124,7 @@ public class App : MonoBehaviour
             }
         }
 
-
+#if UNITY_EDITOR
         // ------------------------
         // Zesty Dev Hacks
         // ------------------------
@@ -141,14 +141,20 @@ public class App : MonoBehaviour
         }
         // ------------------------
 
-#if UNITY_EDITOR
+
         if (Input.GetKey(KeyCode.Space))
             Time.timeScale = 15.0f;
         else
             Time.timeScale = 1.0f;
 
         if (Input.GetKeyDown(KeyCode.P))
-            App.inst.SpawnController.WaveCompleted();
+            SpawnController.WaveCompleted();
+
+        if(Input.GetKeyDown(KeyCode.G))
+            Player.Inst.Cash += 1000;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Reset();
 
 #endif
     }  
@@ -243,6 +249,8 @@ public class App : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
 
+        yield return new WaitUntil(GetIsRunning);
+
         CinematicSet cs = SetManager.OpenSet<CinematicSet>();
         cs.BeginCinematic(CinematicSet.Type.HoarderConversation);
         UseCannonball = false;
@@ -251,6 +259,64 @@ public class App : MonoBehaviour
     public void Reset()
     {
         UseCannonball = true;
+
+        Player.Inst.Reset();
+
+        SpawnController.Reset();
+
+        if (currBgm)
+            currBgm.Stop();
+        currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
     }
 
+    public void Pause()
+    {
+        App.inst.IsRunning = false;
+
+        App.inst.SpawnController.PauseEnemiesForCinematic();
+    }
+
+    public void Unpause()
+    {
+        App.inst.IsRunning = false;
+
+        App.inst.SpawnController.UnpauseEnemiesAfterCinematic();
+    }
+
+    public void Quit()
+    {
+        Player.Inst.Save();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+        Application.Quit();
+    }
+
+    public bool GetIsRunning()
+    {
+        return IsRunning;
+    }
+
+    public void StartGameplay()
+    {
+        if (App.currBgm)
+            SoundManager.StopClip(App.currBgm);
+        App.currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
+
+        new GameSparks.Api.Requests.DeviceAuthenticationRequest().SetDisplayName(Player.Inst.Name).Send((response) => {
+            if (!response.HasErrors)
+            {
+                Debug.Log("Device Authenticated...");
+            }
+            else {
+                Debug.Log("Error Authenticating Device...");
+            }
+        });
+
+        App.inst.IsRunning = true;
+
+        SetManager.OpenSet<WaveNumberSet>();
+    }
 }

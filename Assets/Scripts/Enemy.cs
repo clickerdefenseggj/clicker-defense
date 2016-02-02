@@ -136,6 +136,10 @@ public class Enemy : MonoBehaviour
         agent.speed = 0.0f;
         PlayWalk(false);
         yield return new WaitForSeconds(stunDuration);
+
+        // wait for the game to start running again before we unstun
+        yield return new WaitUntil(App.inst.GetIsRunning);
+
         agent.speed = Template.speed;
         PlayWalk(true);
     }

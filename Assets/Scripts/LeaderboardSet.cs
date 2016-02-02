@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LeaderboardSet : Set {
 
     public RectTransform ScoresAnchor;
+
+    public Button BackButton;
+    public Button MainMenuButton;
+    public Button PlayAgainButton;
 
 	// Use this for initialization
 	void Start () {
@@ -34,28 +39,41 @@ public class LeaderboardSet : Set {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Menu)){
+            GoToMainMenu();
+        }
 
-    public void OnBackPressed()
+    }
+
+    public void GoToMainMenu()
     {
-        Player.Inst.Reset();
+        App.inst.Reset();
 
-        App.inst.SpawnController.Reset();
+        SetManager.OpenSet<MainMenuSet>();
 
-        App.inst.IsRunning = true;
+        CloseSet();
+    }
+
+    public void OnPlayAgainPressed()
+    {
+        SetManager.OpenSet<GameplaySet>();
 
         App.inst.Reset();
 
-
-        
-        if (App.gameplaySet == null)
-            App.gameplaySet = SetManager.OpenSet<GameplaySet>();
+        SetManager.OpenSet<GameplaySet>();
 
         CloseSet();
+    }
 
-        if (App.currBgm)
-            App.currBgm.Stop();
-        App.currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
+    public void OnMainMenuPressed()
+    {
+        GoToMainMenu();
+    }
+
+    public void OnBackPressed()
+    {
+        SetManager.OpenSet<MainMenuSet>();
+
+        CloseSet();
     }
 }

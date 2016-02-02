@@ -10,6 +10,16 @@ using System.Collections.Generic;
 class PlayerData
 {
     public string name;
+    /*public int currentLevel;
+    public int cash;
+    public int score;
+    public int numberKilled;
+    public float maxHealth;
+    public float currentHealth;
+    public float damageBonus;
+    public float junkPerMinute;
+    public int maxJunk;
+    public AchievementTemplate achievements;*/
 }
 
 public class Player : MonoBehaviour
@@ -35,7 +45,15 @@ public class Player : MonoBehaviour
 
     public float JunkRegenSeconds = 0f;
 
-    public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
+    public class item
+    {
+        public int id;
+        public string value;
+    }
+
+    public Dictionary<string, int> UpgradeLevels = new Dictionary<string, int>();
+
+    public AchievementTemplate Achievements;
 
     // TODO: Player preferences
 
@@ -102,21 +120,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetName(Text nameText)
+    public void CreateLocalSave(Text nameText)
     {
         Name = nameText.text;
+        Achievements = new AchievementTemplate();
         Save();
     }
 
     public void SetUpgradeLevel(string name, int level)
     {
-        upgradeLevels[name] = level;
+        UpgradeLevels[name] = level;
     }
 
     public int GetUpgradeLevel(string name)
     {
         int value;
-        upgradeLevels.TryGetValue(name, out value);
+        UpgradeLevels.TryGetValue(name, out value);
         return value;
     }
 
@@ -134,8 +153,18 @@ public class Player : MonoBehaviour
 
         PlayerData data = new PlayerData();
         data.name = Name;
+        /*data.currentLevel = App.inst.SpawnController.CurrentWave;
+        data.cash = Cash;
+        data.score = Score;
+        data.numberKilled = NumberKilled;
+        data.maxHealth = MaxHealth;
+        data.currentHealth = CurrentHealth;
+        data.damageBonus = DamageBonus;
+        data.junkPerMinute = JunkPerMinute;
+        data.maxJunk = MaxJunk;
+        data.achievements = Achievements;*/
 
-        bf.Serialize(file, data);
+    bf.Serialize(file, data);
         file.Close();
     }
 
@@ -152,6 +181,20 @@ public class Player : MonoBehaviour
             file.Close();
 
             Name = data.name;
+
+            /*if(data.currentLevel != 0)
+                App.inst.SpawnController.CurrentWave = data.currentLevel;
+
+            Cash = data.cash;
+            Score = data.score;
+            NumberKilled = data.numberKilled;
+            MaxHealth = data.maxHealth;
+            CurrentHealth = data.currentHealth;
+            DamageBonus = data.damageBonus;
+            JunkPerMinute = data.junkPerMinute;
+            MaxJunk = data.maxJunk;
+            Achievements = data.achievements;*/
+
 
             return true;
         }

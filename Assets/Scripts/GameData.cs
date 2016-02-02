@@ -27,12 +27,16 @@ public static class GameData
             { new AchievementTemplate() { title = "Get out of here!", description = "Kill an enemy", icon = "kill1", type = "kill", number = 1, awarded = false} },
             { new AchievementTemplate() { title = "Deterring the Masses", description = "Kill 10 enemy units", icon = "kill10", type = "kill", number = 10, awarded = false} },
             { new AchievementTemplate() { title = "Expelling the Masses", description = "Kill 25 enemy units", icon = "kill25", type = "kill", number = 25, awarded = false} },
-            { new AchievementTemplate() { title = "Anihillating the Masses", description = "Kill 50 enemy units", icon = "kill50", type = "kill", number = 50, awarded = false} },
+            { new AchievementTemplate() { title = "Expelling the Masses", description = "Kill 25 enemy units", icon = "kill25", type = "kill", number = 25, awarded = false} },
+            { new AchievementTemplate() { title = "This Is Sparta", description = "Kill 300 enemy units", icon = "kill300", type = "kill", number = 300, awarded = false} },
             { new AchievementTemplate() { title = "The big five oh", description = "Score 50 points", icon = "score50", type = "score", number = 50, awarded = false} },
             { new AchievementTemplate() { title = "What's this score thing?", description = "Score 100 points", icon = "score100", type = "score", number = 100, awarded = false} },
             { new AchievementTemplate() { title = "Not just a number", description = "Score 250 points", icon = "score250", type = "score", number = 250, awarded = false} },
             { new AchievementTemplate() { title = "The 500 club", description = "Score 500 points", icon = "score500", type = "score", number = 500, awarded = false} },
-            { new AchievementTemplate() { title = "A thousand point-y things", description = "Score 1000 points", icon = "score1000", type = "score", number = 1000, awarded = false} }
+            { new AchievementTemplate() { title = "A thousand point-y things", description = "Score 1000 points", icon = "score1000", type = "score", number = 1000, awarded = false} },
+            { new AchievementTemplate() { title = "5000 Points On The Wall", description = "Score 5000 points", icon = "score5000", type = "score", number = 5000, awarded = false} },
+            { new AchievementTemplate() { title = "Over 9000", description = "Score OVER 9000 points", icon = "score5000", type = "score", number = 5000, awarded = false} }
+
         };
 
     public static Dictionary<CinematicSet.Type, List<CinematicSet.Conversation>> Cinematics =
@@ -224,13 +228,13 @@ public static class GameData
        new Upgrade(
            "ammo",
            "damage\n+25",
-           cost: lv => 250 + (lv - 1) * 500,
+           cost: lv => 250 + (lv - 1) * 1000,
            apply: p => p.DamageBonus += 25, 
            maxLevel: 20),
        new Upgrade(
            "ammo",
            "junk / min\n+5",
-           cost: lv => lv * 250 + (int)Mathf.Pow(10, lv - 1) / 10,
+           cost: lv => 250 * (int)Mathf.Pow(5, lv - 1),
            apply: p => p.JunkPerMinute += 5,
            maxLevel: 20),
        new Upgrade(

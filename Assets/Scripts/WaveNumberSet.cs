@@ -40,6 +40,7 @@ public class WaveNumberSet : Set
             }
 
             CloseSet();
+            SetManager.OpenSet<GameplaySet>();
         }
     }
 

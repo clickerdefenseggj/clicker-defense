@@ -6,6 +6,8 @@ public class MainMenuSet : Set
 {
     public GameObject NamePopup;
     public Text NameText;
+    public Button LoadButton;
+    public Image LoadingContainer;
 
 	// Use this for initialization
 	void Start ()
@@ -14,6 +16,11 @@ public class MainMenuSet : Set
             NamePopup.SetActive(false);
         else
             NamePopup.SetActive(true);
+
+        /*if(Player.Inst.Load() == false)
+        {
+            LoadButton.gameObject.SetActive(false);
+        }*/
     }
 	
 	// Update is called once per frame
@@ -21,53 +28,38 @@ public class MainMenuSet : Set
     {
         if (Input.GetKey("escape"))
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-
-            Application.Quit();
+            SetManager.OpenSet<ExitConfirmPopup>();
         }
     }
 
     public void OnStartPressed()
     {
-        if (App.currBgm)
-            SoundManager.StopClip(App.currBgm);
-        App.currBgm = SoundManager.PlayBgm("bgm/gameplay_music");
-
-        new GameSparks.Api.Requests.DeviceAuthenticationRequest().SetDisplayName(Player.Inst.Name).Send((response) => {
-            if (!response.HasErrors)
-            {
-                Debug.Log("Device Authenticated...");
-            }
-            else {
-                Debug.Log("Error Authenticating Device...");
-            }
-        });
-
-        App.inst.IsRunning = true;
-
-        if (App.gameplaySet == null)
-            App.gameplaySet = SetManager.OpenSet<GameplaySet>();
-        SetManager.OpenSet<WaveNumberSet>();
-
+        App.inst.StartGameplay();
         CloseSet();
     }
 
     public void OnSubmitName()
     {
-        Player.Inst.SetName(NameText);
-
+        Player.Inst.CreateLocalSave(NameText);
         NamePopup.SetActive(false);
     }
 
     public void OnExitPressed()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        SetManager.OpenSet<ExitConfirmPopup>();
+    }
 
-        Application.Quit();
+    public void OnLoadPressed()
+    {
+        Player.Inst.Load();
+        App.inst.StartGameplay();
+        CloseSet();
+    }
+
+    public void OnLeaderboardPressed()
+    {
+        SetManager.OpenSet<LeaderboardSet>();
+        CloseSet();
     }
 
 }

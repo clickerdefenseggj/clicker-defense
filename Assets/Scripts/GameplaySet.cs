@@ -25,5 +25,12 @@ public class GameplaySet : Set {
         if (healthText)
             healthText.text = Player.Inst.CurrentHealth + "/" + Player.Inst.MaxHealth;
 
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Menu)) { SetManager.OpenSet<PauseSet>(); }
+
+    }
+
+    public void OnPausePressed()
+    {
+        SetManager.OpenSet<PauseSet>();
     }
 }
