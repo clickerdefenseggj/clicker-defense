@@ -48,7 +48,7 @@ public class SpawnWaveController : MonoBehaviour {
                     // Pick a random template
                     EnemyType template;
                     
-                    if(CurrentWave < 2)
+                    if(CurrentWave < 3)
                         template = (EnemyType)Random.Range(0, CurrentWave);
                     else
                         template = (EnemyType)Random.Range(0, GameData.enemyTemplates.Count);

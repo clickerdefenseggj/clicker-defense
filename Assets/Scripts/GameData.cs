@@ -93,7 +93,7 @@ public static class GameData
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "Enemy: Where are they getting these things from?!", OwningTextBox = CinematicSet.Speaker.Enemy}
+                            new CinematicSet.Sentence() { Words = "Enemy: Where are they getting all this junk?!", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
                         LetterDelay = 0.02f,
                         PauseGame = false
@@ -125,7 +125,7 @@ public static class GameData
                     new CinematicSet.Conversation() {
                         Sentences = new List<CinematicSet.Sentence>()
                         {
-                            new CinematicSet.Sentence() { Words = "Enemy: I'll will strike you down", OwningTextBox = CinematicSet.Speaker.Enemy}
+                            new CinematicSet.Sentence() { Words = "Enemy: I will strike you down!", OwningTextBox = CinematicSet.Speaker.Enemy}
                         },
                         LetterDelay = 0.02f,
                         PauseGame = false
