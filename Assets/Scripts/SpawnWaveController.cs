@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SpawnWaveController : MonoBehaviour {
 
-    const int NUM_LANES = 3;
+    const int NUM_LANES = 4;
 
     public GameObject[] SpawnLocations = new GameObject[NUM_LANES];
     public GameObject[] MovementDestinations = new GameObject[NUM_LANES];
